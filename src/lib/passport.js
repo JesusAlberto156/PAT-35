@@ -21,6 +21,7 @@ passport.use('local.signin', new LocalStrategy({
             return done(null, false, req.flash('message', 'El correo no existe'));
         }  
     }else{
+        
         return done(null, false, req.flash('message', 'La cuenta no ha sido activada'));
     }
 
