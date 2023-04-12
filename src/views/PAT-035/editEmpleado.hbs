@@ -225,28 +225,10 @@
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                 <i class="uil-home-alt"></i>
-                                <span class="badge bg-success float-end">5</span>
-                                <span> Dashboards </span>
+                                <span class="badge bg-success float-end"></span>
+                                <span> Edicion de Empleado </span>
                             </a>
-                            <div class="collapse" id="sidebarDashboards">
-                                <ul class="side-nav-second-level">
-                                     <li>
-                                        <a href="/PAT-035/home">Estadisticas</a>
-                                    </li>
-                                    <li>
-                                        <a href="index.html">Ecommerce</a>
-                                    </li>
-                                    <li>
-                                        <a href="/PAT-035/empleados">Empleados</a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboard-crm.html">CRM</a>
-                                    </li>
-                                    <li>
-                                        <a href="dashboard-wallet.html">E-Wallet</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </li>
 
 
@@ -267,307 +249,49 @@
             <div class="content-page">
                 <div class="content">
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
+                    <form id="editemployeeForm" action="/PAT-035/editEmpleado/{{empleado.idEmpleado}}" method="POST">
+            <div  id="editProject" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="CreateProjectLabel">Editar Empleado</h5>
+                    
+                  </div>
+                  <div class="modal-body p-4">
+                    <div class="mb-3">
+                      <label for="projectName" class="form-label">Nombre Completo</label>
+                      <input type="text" class="form-control" id="nombreform" name="nombre" placeholder="Agrega el nombre completo..." value="{{empleado.nombre}}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="projectPhone" class="form-label">Telefono</label>
+                      <input type="text" class="form-control" id="projectPhone" name="telefono" placeholder="Agrega el telefono..." value="{{empleado.telefono}}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="projectEmail" class="form-label">Correo</label>
+                      <input type="text" class="form-control" id="projectEmail" name="correo" placeholder="Agrega el correo..." value="{{empleado.correo}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="projectGender" class="form-label">Sexo</label>
+                        <select class="form-select" id="projectGender" name="sexo" value="{{empleado.sexo}}">
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
+                    </div>
 
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                           
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">Encuestas Y Empleados</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title -->
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card widget-inline">
-                                    <div class="card-body p-0">
-                                        <div class="row g-0">
-                                            <div class="col-sm-6 col-lg-4">
-                                                <div class="card rounded-0 shadow-none m-0">
-                                                    <div class="card-body text-center">
-                                                        <i class="ri-briefcase-line text-muted font-24"></i>
-                                                        <h3><span>29</span></h3>
-                                                        <p class="text-muted font-15 mb-0">Total encuestas</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                
-                                            <div class="col-sm-6 col-lg-4">
-                                                <div class="card rounded-0 shadow-none m-0 border-start border-light">
-                                                    <div class="card-body text-center">
-                                                        <i class="ri-list-check-2 text-muted font-24"></i>
-                                                        <h3><span>715</span></h3>
-                                                        <p class="text-muted font-15 mb-0">Total encuestas respondidas</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                
-                                            <div class="col-sm-6 col-lg-4">
-                                                <div class="card rounded-0 shadow-none m-0 border-start border-light">
-                                                    <div class="card-body text-center">
-                                                        <i class="ri-group-line text-muted font-24"></i>
-                                                        <h3><span>31</span></h3>
-                                                        <p class="text-muted font-15 mb-0">Total Empleados</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                
-                
-                                        </div> <!-- end row -->
-                                    </div>
-                                </div> <!-- end card-box-->
-                            </div> <!-- end col-->
-                        </div>
-                        <!-- end row-->
-
-
-                        <div class="row">
-                            <div class="col-12" >
-                                                                                   
-                                <button type="button" class="btn btn-primary rounded-pill">Iniciar Encuesta</button>
-
-                                <!-- end d-grid -->
-                            </div>
-                        </div>
-                         <!-- start page title -->
-                         <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                       
-                                    </div>
-                                    <h4 class="page-title"></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title -->
-
-
-
-                        <div class="row" >
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h4 class="header-title">Estado de encuesta</h4>
-                                       
-                                    </div>
-
-                                    <div class="card-body pt-0">
-                                        <div class="mt-3 mb-4 chartjs-chart" style="height: 204px;">
-                                            <canvas id="project-status-chart" data-colors="#0acf97,#727cf5,#fa5c7c"></canvas>
-                                        </div>
-
-                                        <div class="row text-center mt-2 py-2">
-                                            <div class="col-sm-4">
-                                                <div class="my-2 my-sm-0">
-                                                        <i class="mdi mdi-trending-up text-success mt-3 h3"></i>
-                                                    <h3 class="fw-normal">
-                                                        <span>64%</span>
-                                                    </h3>
-                                                    <p class="text-muted mb-0">Completed</p>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="my-2 my-sm-0">
-                                                        <i class="mdi mdi-trending-down text-primary mt-3 h3"></i>
-                                                    <h3 class="fw-normal">
-                                                        <span>26%</span>
-                                                    </h3>
-                                                    <p class="text-muted mb-0"> In-progress</p>
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="my-2 my-sm-0">
-                                                        <i class="mdi mdi-trending-down text-danger mt-3 h3"></i>
-                                                    <h3 class="fw-normal">
-                                                        <span>10%</span>
-                                                    </h3>
-                                                    <p class="text-muted mb-0"> Behind</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end row-->
-
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-
-                            <div class="col-lg-8 " >
-                                <div class="card">
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h4 class="header-title">Encuestas</h4>
-                                        <div>
-                                            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                                <option selected="">Todos</option>
-                                                <option value="1">Sin completar</option>
-                                                <option value="2">Completado</option>
-                                            </select>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="card-header bg-light-lighten border-top border-bottom border-light py-1 text-center">
-                                        <p class="m-0"><b>107</b> Encuestas completadas de 195</p>
-                                    </div>
-                                    
-                                    <div class="card-body pt-2">
-                                        <div class="table-responsive" style="overflow-x: auto; max-height: 700px;">
-                                            <table class="table table-centered table-nowrap mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">Date</th>
-                                                        <th scope="col">Status</th>
-                                                        <th scope="col">Amount</th>
-                                                        <th scope="col" class="text-end">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="rounded-circle" src="/images/users/avatar-1.jpg" alt="Avtar image" width="33">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-2">
-                                                                    Adam Baldwin
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td><i class="uil uil-calender me-1"></i>Jan 01, 2022</td>
-                                                        <td>
-                                                            <span class="badge bg-success-lighten text-success">Incoming</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-success fw-semibold">+ $2,586.60</span>
-                                                        </td>
-                                                        <td class="text-end">
-                                                            <a href="javascript:void(0);" class="font-18 text-info me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="uil uil-pen"></i></a>
-                                                            <a href="javascript:void(0);" class="font-18 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="uil uil-trash"></i></a>
-                                                        </td>
-                                                    </tr> <!-- end tr -->
-    
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="rounded-circle" src="/images/users/avatar-2.jpg" alt="Avtar image" width="33">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-2">
-                                                                    Peter Wallace
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td><i class="uil uil-calender me-1"></i>Jan 18, 2022</td>
-                                                        <td>
-                                                            <span class="badge bg-danger-lighten text-danger">Outgoing</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-danger fw-semibold">- $1,250.48</span>
-                                                        </td>
-                                                        <td class="text-end">
-                                                            <a href="javascript:void(0);" class="font-18 text-info me-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i class="uil uil-pen"></i></a>
-                                                            <a href="javascript:void(0);" class="font-18 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="uil uil-trash"></i></a>
-                                                        </td>
-                                                    </tr> <!-- end tr -->
-    
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div> <!-- end table-responsive-->
-
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-                        </div>
-                        <!-- end row-->
-
-                        <!-- parte de administacion de los clientes -->
-                        <div class="row" >
-                            <div class="col-sm-6 col-xl-3 mb-3">
-                                <div class="card mb-0 h-100">
-                                    <div class="card-body">
-                                        <div class="border-dashed border-2 border h-100 w-100 rounded d-flex align-items-center justify-content-center">
-                                            <a href="javascript:void(0);" class="text-center text-muted p-2" data-bs-toggle="modal" data-bs-target="#CreateProject">
-                                                <i class="mdi mdi-plus h3 my-0"></i> <h4 class="font-16 mt-1 mb-0 d-block">Agregar Nuevo Empleado</h4>
-                                            </a>
-                                        </div>
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card -->
-                            </div> <!-- end col -->
-                        </div>    
-
-                        <div class="row mx-auto"  >
-                            
-
-                            <div class="col-lg-12 " >
-                                <div class="card">
-                                    <div class="card-header d-flex justify-content-between align-items-center">
-                                        <h4 class="header-title">Empleados</h4>
-                                        
-                                        
-                                    </div>
-                                    
-
-                                    <div class="card-body pt-2">
-                                        <div class="table-responsive" style="overflow-x: auto; ">
-                                            <table class="table table-centered table-nowrap mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">Nombre</th>
-                                                        <th scope="col">Telefono</th>
-                                                        <th scope="col">Correo</th>
-                                                        <th scope="col">Puesto</th>
-                                                        <th scope="col" class="text-end">Accion</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {{#each empleados}}
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="rounded-circle" src="/images/users/{{sexo}}.jpg" alt="Avtar image" width="33">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-2">
-                                                                    {{nombre}}
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>{{telefono}}</td>
-                                                        <td>
-                                                            {{correo}}
-                                                        </td>
-                                                        <td>
-                                                            {{puesto}}
-                                                        </td>
-                                                        
-                                                        <td class="text-end">
-                                                            <a href="/PAT-035/editEmpleado/{{ idEmpleado}}" class="font-18 text-info me-2" title="Edit"><i class="uil uil-pen"></i></a>
-                                                            <a href="/PAT-035/deleteEmpleado/{{ idEmpleado}}" class="font-18 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete"><i class="uil uil-trash"></i></a>
-                                                        </td>
-                                                    </tr> <!-- end tr -->
-                                                    {{/each}}
-    
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div> <!-- end table-responsive-->
-
-                                    </div> <!-- end card body-->
-                                </div> <!-- end card -->
-                            </div><!-- end col-->
-                        </div>
-                        <!-- end row-->
+                    <div class="mb-3">
+                      <label for="projectPosition" class="form-label">Puesto</label>
+                      <input type="text" class="form-control" id="projectPosition" name="puesto" placeholder="Agrega el puesto..." value="{{empleado.puesto}}">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="/PAT-035/home" class="btn btn-light" >Cerrar</a>
+                    <button type="submit" class="btn btn-primary">Actualizar Empleado</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+                    
 
                         
 
@@ -575,30 +299,13 @@
                        
                         
 
-                    </div>
+                </div>
                     <!-- container -->
 
-                </div>
+            </div>
                 <!-- content -->
 
-                <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-end footer-links d-none d-md-block">
-                                    <a href="javascript: void(0);">About</a>
-                                    <a href="javascript: void(0);">Support</a>
-                                    <a href="javascript: void(0);">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
+                
 
             </div>
 

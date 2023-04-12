@@ -9,20 +9,23 @@ passport.use('local.signin', new LocalStrategy({
     passReqToCallback: true
 }, async (req, correo, password, done) => {
     const hotel = await pool.query('SELECT * FROM hotel_access WHERE correo = ?', [correo]);
-    if(hotel[0].estatus == 1){
-        if(hotel.length > 0){
-            const validPassword = await helpers.matchPassword(password, hotel[0].password);
-            if(validPassword){
-                done(null, hotel[0], req.flash('success', 'Bienvenido ' + hotel[0].nombre));
+    if(hotel.length > 0){
+        if(hotel[0].estatus == 1){
+            if(hotel.length > 0){
+                const validPassword = await helpers.matchPassword(password, hotel[0].password);
+                if(validPassword){
+                    done(null, hotel[0], req.flash('success', 'Bienvenido ' + hotel[0].nombre));
+                }else{
+                    done(null, false, req.flash('message', 'Contraseña incorrecta'));
+                }
             }else{
-                done(null, false, req.flash('message', 'Contraseña incorrecta'));
-            }
+                return done(null, false, req.flash('message', 'El correo no existe'));
+            }  
         }else{
-            return done(null, false, req.flash('message', 'El correo no existe'));
-        }  
+            return done(null, false, req.flash('message', 'La cuenta no ha sido activada'));
+        }
     }else{
-        
-        return done(null, false, req.flash('message', 'La cuenta no ha sido activada'));
+        return done(null, false, req.flash('message', 'El correo no existe'));  
     }
 
 }));
