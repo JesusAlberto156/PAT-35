@@ -8,7 +8,13 @@ router.get('/home',isLoggedIn,async (req, res) => {
    
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
     res.render('PAT-035/home', {hotel: hotel[0]});
-    //res.render('PAT-035/home'); 
+    
+});
+
+router.get('/estadisticasGlobales',isLoggedIn,async (req, res) => {
+   
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    res.render('PAT-035/estadisticasGlobales', {hotel: hotel[0]});
     
 });
 
