@@ -54,6 +54,7 @@ app.use((req, res, next) => {
 //routes
 app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
+app.use(require('./routes/Encuesta'));
 app.use('/PAT-035', require('./routes/PAT-035'));
 
 
