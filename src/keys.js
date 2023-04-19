@@ -1,8 +1,8 @@
 module.exports = {
     database: {
-        host: '127.0.0.1',
+        host: 'localhost',
         user: 'root',
-        password: '123',
+        password: '',
         database: 'pat035'
     }
 }

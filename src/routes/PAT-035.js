@@ -107,5 +107,12 @@ router.post('/editProfile',isLoggedIn,async (req, res) => {
     res.redirect('/PAT-035/profile');
 });
 
+router.get('/reportes',isLoggedIn,async (req, res) => {  
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    const numEmpleados = await pool.query('SELECT COUNT(*) AS numEmpleados FROM empleado WHERE idhotel = ?', req.user.id);
+    console.log(numEmpleados[0]);
+    res.render('PAT-035/reportes', {hotel: hotel[0], numEmpleados: numEmpleados[0]});
+});
+
 
 module.exports = router;
