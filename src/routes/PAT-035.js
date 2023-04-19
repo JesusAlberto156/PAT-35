@@ -82,7 +82,30 @@ router.get('/deleteEmpleado/:idEmpleado',async (req, res) => {
     res.redirect('/PAT-035/empleados');
 });
 
+router.get('/profile',isLoggedIn,async (req, res) => {  
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    const numEmpleados = await pool.query('SELECT COUNT(*) AS numEmpleados FROM empleado WHERE idhotel = ?', req.user.id);
+    console.log(numEmpleados[0]);
+    res.render('PAT-035/profile', {hotel: hotel[0], numEmpleados: numEmpleados[0]});
+});
 
+router.get('/editProfile',isLoggedIn,async (req, res) => {
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    res.render('PAT-035/editProfile', {hotel: hotel[0]});
+});
+router.post('/editProfile',isLoggedIn,async (req, res) => {
+    const {nombre, direccion, telefono, correo,descripcion} = req.body;
+    const newHotel = {
+        nombre,
+        direccion,
+        telefono,
+        descripcion
+    };
+    await pool.query('UPDATE hotel set ? WHERE id = ?', [newHotel, req.user.id]);
+   
+    req.flash('success', 'Perfil actualizado satisfactoriamente');
+    res.redirect('/PAT-035/profile');
+});
 
 
 module.exports = router;
