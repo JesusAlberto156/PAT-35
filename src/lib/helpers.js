@@ -27,5 +27,8 @@ helpers.verifyPass= (contrasena) =>{
     }
 };
 
+helpers.porcentajeCompletado = (total, completado) =>{
+    return (completado*100)/total;
+};
 
 module.exports = helpers;

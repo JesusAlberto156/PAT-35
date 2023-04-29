@@ -21,8 +21,17 @@ router.get('/estadisticasGlobales',isLoggedIn,async (req, res) => {
 router.get('/empleados',isLoggedIn,async (req, res) => {
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
     const empleados = await pool.query('SELECT * FROM empleado WHERE idhotel = ?', req.user.id);
+    const numEncuestas = await pool.query('SELECT COUNT(*) as numEncuestas FROM encuesta WHERE idhotel = ?', req.user.id);
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
+    const numRespuestas = await pool.query('SELECT COUNT(*) as numRespuestas FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+    const totalEmpleados = empleados.length;
+    const completadoPorcentaje = numRespuestas[0].numRespuestas * 100 / totalEmpleados;
     
-    res.render('PAT-035/empleados', {hotel: hotel[0], empleados});
+    const noCompletadoPorcentaje = totalEmpleados - completadoPorcentaje;
+    console.log(completadoPorcentaje);
+    console.log(noCompletadoPorcentaje);
+    
+    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados});
     
 });
 
@@ -114,5 +123,24 @@ router.get('/reportes',isLoggedIn,async (req, res) => {
     res.render('PAT-035/reportes', {hotel: hotel[0], numEmpleados: numEmpleados[0]});
 });
 
+router.get('/startEncuesta',async (req, res) => {
+    const fecha = new Date();
+    const newEncuesta = {
+        fecha,
+        estatus: 0,
+        idhotel: req.user.id
+    };
+    const hayEncuesta = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
+    if(hayEncuesta.length > 0){
+        req.flash('message', 'Ya existe una encuesta activa');
+        res.redirect('/PAT-035/empleados');
+
+    }else{
+        await pool.query('INSERT INTO encuesta set ?', [newEncuesta]);
+        req.flash('success', 'Encuesta iniciada satisfactoriamente');
+        res.redirect('/PAT-035/empleados');
+    }
+    
+});
 
 module.exports = router;
