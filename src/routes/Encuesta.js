@@ -4,6 +4,11 @@ const router = express.Router();
 const pool = require('../database');
 
 router.get('/:idHotel/:idEncuesta/encuesta/:idEmpleado', async (req, res) => {
+    const check = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ? AND idEmpleado = ?', [req.params.idEncuesta, req.params.idEmpleado]);
+    if (check.length > 0) {
+        res.render('Encuesta/completada');
+    }
+    else{
     const {idHotel, idEncuesta, idEmpleado} = req.params;
     console.log(idHotel, idEncuesta, idEmpleado);
     const hotel = await pool.query('Select * from hotel where id = ?', [idHotel]);
@@ -11,11 +16,151 @@ router.get('/:idHotel/:idEncuesta/encuesta/:idEmpleado', async (req, res) => {
 
     console.log(empleado[0]);
     res.render('Encuesta/encuesta', {hotel: hotel[0], empleado: empleado[0]});
+    }
 });
 
 router.post('/:idHotel/:idEncuesta/encuesta/:idEmpleado', async (req, res) => {
-    console.log(req.body);
-    res.send('recibido');
+    console.log("------------------------------");
+    
+    const {
+        Pregunta1,
+        Pregunta2,
+        Pregunta3,
+        Pregunta4,
+        Pregunta5,
+        Pregunta6,
+        Pregunta7,
+        Pregunta8,
+        Pregunta9,
+        Pregunta10,
+        Pregunta11,
+        Pregunta12,
+        Pregunta13,
+        Pregunta14,
+        Pregunta15,
+        Pregunta16,
+        Pregunta17,
+        Pregunta18,
+        Pregunta19,
+        Pregunta20,
+        Pregunta21,
+        Pregunta22,
+        Pregunta23,
+        Pregunta24,
+        Pregunta25,
+        Pregunta26,
+        Pregunta27,
+        Pregunta28,
+        Pregunta29,
+        Pregunta30,
+        Pregunta31,
+        Pregunta32,
+        Pregunta33,
+        Pregunta34,
+        Pregunta35,
+        Pregunta36,
+        Pregunta37,
+        Pregunta38,
+        Pregunta39,
+        Pregunta40,
+        Pregunta41,
+        Pregunta42,
+        Pregunta43,
+        Pregunta44,
+        Pregunta45,
+        Pregunta46,
+        Pregunta47,
+        Pregunta48,
+        Pregunta49,
+        Pregunta50,
+        Pregunta51,
+        Pregunta52,
+        Pregunta53,
+        Pregunta54,
+        Pregunta55,
+        Pregunta56,
+        Pregunta57,
+        Pregunta58,
+        Pregunta59,
+        Pregunta60,
+        Pregunta61,
+        Pregunta62,
+        Pregunta63
+    } = req.body;
+    const newEncuesta = {
+        idEncuesta: req.params.idEncuesta,
+        idEmpleado: req.params.idEmpleado,
+        fecha: new Date(),
+        Pregunta1,
+        Pregunta2,
+        Pregunta3,
+        Pregunta4,
+        Pregunta5,
+        Pregunta6,
+        Pregunta7,
+        Pregunta8,
+        Pregunta9,
+        Pregunta10,
+        Pregunta11,
+        Pregunta12,
+        Pregunta13,
+        Pregunta14,
+        Pregunta15,
+        Pregunta16,
+        Pregunta17,
+        Pregunta18,
+        Pregunta19,
+        Pregunta20,
+        Pregunta21,
+        Pregunta22,
+        Pregunta23,
+        Pregunta24,
+        Pregunta25,
+        Pregunta26,
+        Pregunta27,
+        Pregunta28,
+        Pregunta29,
+        Pregunta30,
+        Pregunta31,
+        Pregunta32,
+        Pregunta33,
+        Pregunta34,
+        Pregunta35,
+        Pregunta36,
+        Pregunta37,
+        Pregunta38,
+        Pregunta39,
+        Pregunta40,
+        Pregunta41,
+        Pregunta42,
+        Pregunta43,
+        Pregunta44,
+        Pregunta45,
+        Pregunta46,
+        Pregunta47,
+        Pregunta48,
+        Pregunta49,
+        Pregunta50,
+        Pregunta51,
+        Pregunta52,
+        Pregunta53,
+        Pregunta54,
+        Pregunta55,
+        Pregunta56,
+        Pregunta57,
+        Pregunta58,
+        Pregunta59,
+        Pregunta60,
+        Pregunta61,
+        Pregunta62,
+        Pregunta63
+
+
+    };
+    console.log(newEncuesta);
+    await pool.query('INSERT INTO respuestas set ?', [newEncuesta]);
+    res.render('Encuesta/completada');
+    
 
 });
 // /1/1/encuesta/1 

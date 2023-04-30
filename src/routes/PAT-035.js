@@ -24,14 +24,18 @@ router.get('/empleados',isLoggedIn,async (req, res) => {
     const numEncuestas = await pool.query('SELECT COUNT(*) as numEncuestas FROM encuesta WHERE idhotel = ?', req.user.id);
     const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
     const numRespuestas = await pool.query('SELECT COUNT(*) as numRespuestas FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+    const EmpleadoNoRespondio = await pool.query('SELECT EM.nombre,EM.sexo FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL;', [EncuestaActiva[0].idEncuesta]);
+    EmpleadoNoRespondio.forEach(function(empleado) {
+        empleado.fecha = EncuestaActiva[0].fecha;
+      });
     const totalEmpleados = empleados.length;
-    const completadoPorcentaje = numRespuestas[0].numRespuestas * 100 / totalEmpleados;
-    
+    const completadoPorcentaje = numRespuestas[0].numRespuestas ;
+    console.log(EncuestaActiva)
     const noCompletadoPorcentaje = totalEmpleados - completadoPorcentaje;
     console.log(completadoPorcentaje);
     console.log(noCompletadoPorcentaje);
-    
-    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados});
+    const totalRespuestas = await pool.query('SELECT count(*) FROM respuestas AS R INNER JOIN  encuesta AS EN ON EN.idEncuesta= R.idEncuesta AND EN.idHotel= ?', req.user.id); 
+    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)']});
     
 });
 
@@ -119,8 +123,10 @@ router.post('/editProfile',isLoggedIn,async (req, res) => {
 router.get('/reportes',isLoggedIn,async (req, res) => {  
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
     const numEmpleados = await pool.query('SELECT COUNT(*) AS numEmpleados FROM empleado WHERE idhotel = ?', req.user.id);
-    console.log(numEmpleados[0]);
-    res.render('PAT-035/reportes', {hotel: hotel[0], numEmpleados: numEmpleados[0]});
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
+    const reporteRespuestas = await pool.query('select  idEncuesta, idEmpleado, fecha from respuestas where  IdEncuesta=?', EncuestaActiva[0].idEncuesta);
+    console.log(reporteRespuestas);
+    res.render('PAT-035/reportes', {hotel: hotel[0], numEmpleados: numEmpleados[0], reporteRespuestas});
 });
 
 router.get('/startEncuesta',async (req, res) => {
@@ -142,5 +148,12 @@ router.get('/startEncuesta',async (req, res) => {
     }
     
 });
+
+router.get('/verEncuesta/:idEncuesta/:idEmpleado',async (req, res) => {
+    const respuestas = await pool.query('select * from respuestas where idEmpleado = ? and IdEncuesta=?', [req.params.idEmpleado, req.params.idEncuesta]);
+    console.log(respuestas);
+    res.render('PAT-035/encuestaReporte', {respuestas : respuestas[0]});
+});
+
 
 module.exports = router;
