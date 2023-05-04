@@ -9,6 +9,7 @@ router.get('/home',isLoggedIn,async (req, res) => {
    
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
     const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
+    if (EncuestaActiva.length>0){
     console.log(EncuestaActiva);
     let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
 
@@ -45,6 +46,9 @@ router.get('/home',isLoggedIn,async (req, res) => {
     
     
     res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
+    }else{
+        res.render('PAT-035/home', {hotel: hotel[0]});
+    }
     
 });
 
@@ -80,10 +84,10 @@ router.get('/empleados',isLoggedIn,async (req, res) => {
     const links = helpers.genLinks(telEmpleados, req.user.id, EncuestaActiva[0].idEncuesta);
     console.log(links);
 
-    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)']});
+    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)'],links});
     }else{
         console.log("entra a esto")
-        res.render('PAT-035/empleados', {hotel: hotel[0], empleados, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalRespuestas: totalRespuestas[0]['count(*)'],links});
+        res.render('PAT-035/empleados', {hotel: hotel[0], empleados, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalRespuestas: totalRespuestas[0]['count(*)']});
     }
 });
 
