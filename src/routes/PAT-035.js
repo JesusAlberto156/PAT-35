@@ -3,11 +3,40 @@ const router = express.Router();
 const {isLoggedIn} =require('../lib/auth');
 
 const pool = require('../database');
+const helpers = require('../lib/helpers');
 
 router.get('/home',isLoggedIn,async (req, res) => {
    
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
-    res.render('PAT-035/home', {hotel: hotel[0]});
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
+    console.log(EncuestaActiva);
+    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+
+    respuestas=helpers.cambioArray(respuestas);         
+    let total = helpers.total(respuestas);
+    const general = helpers.general(total);
+    let prom = helpers.promedioGeneral(total);
+    let accionGen = helpers.accionGen(prom);
+    let estadogen = helpers.estadoGen(prom);
+    let colorGen = helpers.colorGen(prom);
+    let totalCat1 = helpers.totalCAT1(respuestas);
+    let totalCat2 = helpers.totalCAT2(respuestas);
+    let cat1 = helpers.CAT1(totalCat1);
+    let cat2 = helpers.CAT2(totalCat2);
+    console.log(respuestas);
+    console.log(total);
+    console.log(general);
+    console.log(prom);
+    console.log(estadogen);
+
+    console.log(totalCat1);
+    console.log(cat1);
+    console.log(totalCat2);
+    console.log(cat2);
+    
+    
+    
+    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2});
     
 });
 
@@ -37,11 +66,16 @@ router.get('/empleados',isLoggedIn,async (req, res) => {
     const noCompletadoPorcentaje = totalEmpleados - completadoPorcentaje;
     console.log(completadoPorcentaje);
     console.log(noCompletadoPorcentaje);
+
+    const telEmpleados = await pool.query('SELECT EM.nombre,EM.telefono,EM.idEmpleado FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
     
+    const links = helpers.genLinks(telEmpleados, req.user.id, EncuestaActiva[0].idEncuesta);
+    console.log(links);
+
     res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)']});
     }else{
         console.log("entra a esto")
-        res.render('PAT-035/empleados', {hotel: hotel[0], empleados, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalRespuestas: totalRespuestas[0]['count(*)']});
+        res.render('PAT-035/empleados', {hotel: hotel[0], empleados, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalRespuestas: totalRespuestas[0]['count(*)'],links});
     }
 });
 
@@ -169,5 +203,12 @@ router.get('/verEncuesta/:idEncuesta/:idEmpleado',async (req, res) => {
     res.render('PAT-035/encuestaReporte', {respuestas : respuestas[0]});
 });
 
+router.get('/administrador',async (req, res) => {
+    
+    res.render('PAT-035/administrador');
+});
+
+//lsof -i :4000
+//kill -9 PID
 
 module.exports = router;
