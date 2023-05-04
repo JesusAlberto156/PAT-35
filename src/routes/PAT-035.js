@@ -216,6 +216,11 @@ router.get('/administrador',async (req, res) => {
     res.render('PAT-035/administrador');
 });
 
+router.get('/addHotelAdmin',async (req, res) => {
+    
+    res.render('PAT-035/addHotelAdmin');
+});
+
 //lsof -i :4000
 //kill -9 PID
 
