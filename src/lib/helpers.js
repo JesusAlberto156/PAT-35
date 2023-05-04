@@ -252,7 +252,7 @@ helpers.totalCAT3 = (encuestas) => {
     // Recorre todas las propiedades del objeto
     for (const [key, value] of Object.entries(encuesta)) {
       // Si la propiedad es "pregunta16", "pregunta17" o "pregunta18", suma su valor
-      if (key === 'pregunta19' || key === 'pregunta20' || key === 'pregunta21' || key === 'pregunta24' || key === 'pregunta22' || key === 'pregunta23' || key === '57' || key === 'pregunta58' || key === 'pregunta59') {
+      if (key === 'pregunta29' || key === 'pregunta30' || key === 'pregunta31' || key === 'pregunta32' ) {
         suma += value;
       }
     }
@@ -261,6 +261,78 @@ helpers.totalCAT3 = (encuestas) => {
   });
   
   return sumas;
+};
+
+helpers.CAT3 = (arr) => {
+
+  
+  var conteo = {
+    "Muyalto": 0,
+    "Alto": 0,
+    "Medio": 0,
+    "Bajo": 0,
+    "Nuloodespreciable": 0
+  };
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] >= 12) {
+      conteo["Muyalto"]++;
+    } else if (arr[i] >= 9 && arr[i] < 12) {
+      conteo["Alto"]++;
+    } else if (arr[i] >= 6 && arr[i] < 9) {
+      conteo["Medio"]++;
+    } else if (arr[i] >= 4 && arr[i] < 6) {
+      conteo["Bajo"]++;
+    } else if (arr[i] >= 0 && arr[i] < 4) {
+      conteo["Nuloodespreciable"]++;
+    }
+  }
+  return conteo;
+
+};
+
+helpers.totalCAT4 = (encuestas) => {
+  let sumas = [];
+
+  encuestas.forEach(function(encuesta) {
+    let suma = 0;
+    // Recorre todas las propiedades del objeto
+    for (const [key, value] of Object.entries(encuesta)) {
+      // Si la propiedad es "pregunta16", "pregunta17" o "pregunta18", suma su valor
+      if (key === 'pregunta23' || key === 'pregunta24' || key === 'pregunta25' || key === 'pregunta28' || key === 'pregunta29' || key === 'pregunta30' || key === 'pregunta31' || key === 'pregunta32' || key === 'pregunta44' || key === 'pregunta45' || key === 'pregunta46' || key === 'pregunta33' || key === 'pregunta34' || key === 'pregunta35' || key === 'pregunta36' || key === 'pregunta37' || key === 'pregunta38' || key === 'pregunta39' || key === 'pregunta40') {
+        suma += value;
+    }
+    
+    }
+    // Agrega la suma al arreglo de sumas
+    sumas.push(suma);
+  });
+  
+  return sumas;
+};
+
+helpers.CAT4 = (arr) => {
+  var conteo = {
+    "Muyalto": 0,
+    "Alto": 0,
+    "Medio": 0,
+    "Bajo": 0,
+    "Nuloodespreciable": 0
+  };
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] >= 38) {
+      conteo["Muyalto"]++;
+    } else if (arr[i] >= 28 && arr[i] < 38) {
+      conteo["Alto"]++;
+    } else if (arr[i] >= 18 && arr[i] < 28) {
+      conteo["Medio"]++;
+    } else if (arr[i] >= 10 && arr[i] < 18) {
+      conteo["Bajo"]++;
+    } else if (arr[i] >= 0 && arr[i] < 10) {
+      conteo["Nuloodespreciable"]++;
+    }
+  }
+  return conteo;
+
 };
 
 

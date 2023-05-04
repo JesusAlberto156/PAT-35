@@ -21,8 +21,12 @@ router.get('/home',isLoggedIn,async (req, res) => {
     let colorGen = helpers.colorGen(prom);
     let totalCat1 = helpers.totalCAT1(respuestas);
     let totalCat2 = helpers.totalCAT2(respuestas);
+    let totalCat3 = helpers.totalCAT3(respuestas);
+    let totalCat4 = helpers.totalCAT4(respuestas);
     let cat1 = helpers.CAT1(totalCat1);
     let cat2 = helpers.CAT2(totalCat2);
+    let cat3 = helpers.CAT3(totalCat3);
+    let cat4 = helpers.CAT3(totalCat4);
     console.log(respuestas);
     console.log(total);
     console.log(general);
@@ -33,10 +37,14 @@ router.get('/home',isLoggedIn,async (req, res) => {
     console.log(cat1);
     console.log(totalCat2);
     console.log(cat2);
+    console.log(totalCat3);
+    console.log(cat3);
+    console.log(totalCat4);
+    console.log(cat4);
     
     
     
-    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2});
+    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
     
 });
 
