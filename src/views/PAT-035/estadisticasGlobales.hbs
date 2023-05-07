@@ -13,7 +13,7 @@
                             <!-- Logo light -->
                             <a href="/PAT-035/home" class="logo-light">
                                 <span class="logo-lg">
-                                    <img src="" alt="logo">
+                                    <img src=" /images/AHMT.png" alt="medium logo">
                                 </span>
                                 <span class="logo-sm">
                                     <img src="" alt="small logo">
@@ -23,7 +23,7 @@
                             <!-- Logo Dark -->
                             <a href="/PAT-035/home" class="logo-dark">
                                 <span class="logo-lg">
-                                    <img src="" alt="dark logo">
+                                    <img src=" /images/AHMT.png" alt="dark logo">
                                 </span>
                                 <span class="logo-sm">
                                     <img src="" alt="small logo">
@@ -115,7 +115,7 @@
                 <!-- Brand Logo Light -->
                 <a href="/PAT-035/home" class="logo logo-light">
                     <span class="logo-lg">
-                        <img src="" alt="logo">
+                        <img src=" /images/AHMT.png" alt="logo">
                     </span>
                     <span class="logo-sm">
                         <img src="" alt="small logo">
@@ -125,7 +125,7 @@
                 <!-- Brand Logo Dark -->
                 <a href="/PAT-035/home" class="logo logo-dark">
                     <span class="logo-lg">
-                        <img src="" alt="dark logo">
+                        <img src=" /images/AHMT.png" alt="dark logo">
                     </span>
                     <span class="logo-sm">
                         <img src="" alt="small logo">
@@ -266,161 +266,1090 @@
                             <!-- Una estrella -->
                             <div class="collapse card-img-overlay" id="Una-estrella">
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <div id="Dañopsicosocial1" style="width: 200px; height: 215px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <img src=" /images/Hoteles/RP.png" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                    <div class="col-6.6 order-lg-1">
+                                            <div class="card card-h-100">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">RESULTADOS GENERALES</h4>
+                                                
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica11"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable11 = {{general1.Nuloodespreciable}};
+                                                    const bajo11 = {{general1.Bajo}};
+                                                    const medio11 = {{general1.Medio}};
+                                                    const alto11 = {{general1.Alto}};
+                                                    const muyAlto11 = {{general1.Muyalto}};
+                                                    const data11 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable11, bajo11, medio11, alto11, muyAlto11],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options11 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx11 = document.getElementById('grafica11').getContext('2d');
+                                                    const myPieChart11 = new Chart(ctx11, {
+                                                        type: 'pie',
+                                                        data: data11,
+                                                        options: options11
+                                                    });
+                                                </script>
+                    
+            
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div>  
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Acontecimientotraumaticosevero1" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">AMBIENTE DE TRABAJO </h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica12"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx12 = document.getElementById('grafica12').getContext('2d');
+                                                        const data12 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat11.Nuloodespreciable}}, {{cat11.Bajo}}, {{cat11.Medio}}, {{cat11.Alto}}, {{cat11.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options12 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart12 = new Chart(ctx12, {
+                                                            type: 'bar',
+                                                            data: data12,
+                                                            options: options12
+                                                        });
+                                                    </script>
+
+
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->  
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/ATS.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">FACTORES PROPIOS DE LA ACTIVIDAD</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica13"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx13 = document.getElementById('grafica13').getContext('2d');
+                                                        const data13 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat12.Nuloodespreciable}}, {{cat12.Bajo}}, {{cat12.Medio}}, {{cat12.Alto}}, {{cat12.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options13 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart13 = new Chart(ctx13, {
+                                                            type: 'bar',
+                                                            data: data13,
+                                                            options: options13
+                                                        });
+                                                    </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Entornoorganizacional1" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title"> ORGANIZACION DEL TIEMPO DE TRABAJO</h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica14"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable14 = {{cat13.Nuloodespreciable}};
+                                                    const bajo14 = {{cat13.Bajo}};
+                                                    const medio14 = {{cat13.Medio}};
+                                                    const alto14 = {{cat13.Alto}};
+                                                    const muyAlto14 = {{cat13.Muyalto}};
+                                                    const data14 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable14, bajo14, medio14, alto14, muyAlto14],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options14 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx14 = document.getElementById('grafica14').getContext('2d');
+                                                    const myPieChart14 = new Chart(ctx14, {
+                                                        type: 'pie',
+                                                        data: data14,
+                                                        options: options14
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/EO.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
-                                </div>
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">LIDERAZGO Y RELACIONES EN EL TRABAJO</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica15"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable15 = {{cat14.Nuloodespreciable}};
+                                                    const bajo15= {{cat14.Bajo}};
+                                                    const medio15 = {{cat14.Medio}};
+                                                    const alto15= {{cat14.Alto}};
+                                                    const muyAlto15= {{cat14.Muyalto}};
+                                                    const data15 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable15, bajo15, medio15, alto15, muyAlto15],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options15 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx15 = document.getElementById('grafica15').getContext('2d');
+                                                    const myPieChart15 = new Chart(ctx15, {
+                                                        type: 'pie',
+                                                        data: data15,
+                                                        options: options15
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                </div>   
                             </div>
                             <!-- Una estrella -->
+                            <!-- Dos estrellas -->
+                            <div class="collapse card-img-overlay" id="Dos-estrellas">
+                                <div class="row">
+                                    <div class="col-6.6 order-lg-1">
+                                            <div class="card card-h-100">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">RESULTADOS GENERALES</h4>
+                                                
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica21"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable21 = {{general2.Nuloodespreciable}};
+                                                    const bajo21 = {{general2.Bajo}};
+                                                    const medio21 = {{general2.Medio}};
+                                                    const alto21 = {{general2.Alto}};
+                                                    const muyAlto21 = {{general2.Muyalto}};
+                                                    const data21 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable21, bajo21, medio21, alto21, muyAlto21],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options21 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx21 = document.getElementById('grafica21').getContext('2d');
+                                                    const myPieChart21 = new Chart(ctx21, {
+                                                        type: 'pie',
+                                                        data: data21,
+                                                        options: options21
+                                                    });
+                                                </script>
+                    
+            
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div>  
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+                                        <div class="card">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">AMBIENTE DE TRABAJO </h4>
+                                            
+                                            </div>
 
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica22"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx22 = document.getElementById('grafica22').getContext('2d');
+                                                        const data22 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat21.Nuloodespreciable}}, {{cat21.Bajo}}, {{cat21.Medio}}, {{cat21.Alto}}, {{cat21.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options22 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart22 = new Chart(ctx22, {
+                                                            type: 'bar',
+                                                            data: data22,
+                                                            options: options22
+                                                        });
+                                                    </script>
+
+
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->  
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+                                        <div class="card">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">FACTORES PROPIOS DE LA ACTIVIDAD</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica23"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx23 = document.getElementById('grafica23').getContext('2d');
+                                                        const data23 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat22.Nuloodespreciable}}, {{cat22.Bajo}}, {{cat22.Medio}}, {{cat22.Alto}}, {{cat22.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options23 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart23 = new Chart(ctx23, {
+                                                            type: 'bar',
+                                                            data: data23,
+                                                            options: options23
+                                                        });
+                                                    </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+                                        <div class="card">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title"> ORGANIZACION DEL TIEMPO DE TRABAJO</h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica24"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable24 = {{cat23.Nuloodespreciable}};
+                                                    const bajo24 = {{cat23.Bajo}};
+                                                    const medio24 = {{cat23.Medio}};
+                                                    const alto24 = {{cat23.Alto}};
+                                                    const muyAlto24 = {{cat23.Muyalto}};
+                                                    const data24 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable24, bajo24, medio24, alto24, muyAlto24],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options24 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx24 = document.getElementById('grafica24').getContext('2d');
+                                                    const myPieChart24 = new Chart(ctx24, {
+                                                        type: 'pie',
+                                                        data: data24,
+                                                        options: options24
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
+                                        <div class="card">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">LIDERAZGO Y RELACIONES EN EL TRABAJO</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica25"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable25 = {{cat24.Nuloodespreciable}};
+                                                    const bajo25= {{cat24.Bajo}};
+                                                    const medio25 = {{cat24.Medio}};
+                                                    const alto25= {{cat24.Alto}};
+                                                    const muyAlto25= {{cat24.Muyalto}};
+                                                    const data25 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable25, bajo25, medio25, alto25, muyAlto25],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options25 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx25 = document.getElementById('grafica25').getContext('2d');
+                                                    const myPieChart25 = new Chart(ctx25, {
+                                                        type: 'pie',
+                                                        data: data25,
+                                                        options: options25
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                </div> 
+                            </div>
+                            <!-- Dos estrellas -->
                             <!-- Tres estrellas -->
                             <div class="collapse card-img-overlay" id="Tres-estrellas">
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <div id="Dañopsicosocial3" style="width: 200px; height: 215px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <img src=" /images/Hoteles/RP.png" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                    <div class="col-6.6 order-lg-1">
+                                            <div class="card card-h-100">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">RESULTADOS GENERALES</h4>
+                                                
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica31"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable31 = {{general3.Nuloodespreciable}};
+                                                    const bajo31 = {{general3.Bajo}};
+                                                    const medio31 = {{general3.Medio}};
+                                                    const alto31 = {{general3.Alto}};
+                                                    const muyAlto31 = {{general3.Muyalto}};
+                                                    const data31 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable31, bajo31, medio31, alto31, muyAlto31],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options31 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx31 = document.getElementById('grafica31').getContext('2d');
+                                                    const myPieChart31 = new Chart(ctx31, {
+                                                        type: 'pie',
+                                                        data: data31,
+                                                        options: options31
+                                                    });
+                                                </script>
+                    
+            
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div>  
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Acontecimientotraumaticosevero3" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">AMBIENTE DE TRABAJO </h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica32"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx32 = document.getElementById('grafica32').getContext('2d');
+                                                        const data32 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat31.Nuloodespreciable}}, {{cat31.Bajo}}, {{cat31.Medio}}, {{cat31.Alto}}, {{cat31.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options32 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart32 = new Chart(ctx32, {
+                                                            type: 'bar',
+                                                            data: data32,
+                                                            options: options32
+                                                        });
+                                                    </script>
+
+
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->  
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/ATS.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">FACTORES PROPIOS DE LA ACTIVIDAD</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica33"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx33 = document.getElementById('grafica33').getContext('2d');
+                                                        const data33 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat32.Nuloodespreciable}}, {{cat32.Bajo}}, {{cat32.Medio}}, {{cat32.Alto}}, {{cat32.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options33 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart33 = new Chart(ctx33, {
+                                                            type: 'bar',
+                                                            data: data33,
+                                                            options: options33
+                                                        });
+                                                    </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Entornoorganizacional3" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title"> ORGANIZACION DEL TIEMPO DE TRABAJO</h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica34"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable34 = {{cat33.Nuloodespreciable}};
+                                                    const bajo34 = {{cat33.Bajo}};
+                                                    const medio34 = {{cat33.Medio}};
+                                                    const alto34 = {{cat33.Alto}};
+                                                    const muyAlto34 = {{cat33.Muyalto}};
+                                                    const data34 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable34, bajo34, medio34, alto34, muyAlto34],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options34 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx34 = document.getElementById('grafica34').getContext('2d');
+                                                    const myPieChart34 = new Chart(ctx34, {
+                                                        type: 'pie',
+                                                        data: data34,
+                                                        options: options34
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/EO.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">LIDERAZGO Y RELACIONES EN EL TRABAJO</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica35"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable35 = {{cat34.Nuloodespreciable}};
+                                                    const bajo35= {{cat34.Bajo}};
+                                                    const medio35 = {{cat34.Medio}};
+                                                    const alto35= {{cat34.Alto}};
+                                                    const muyAlto35= {{cat34.Muyalto}};
+                                                    const data35 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable35, bajo35, medio35, alto35, muyAlto35],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options35 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx35 = document.getElementById('grafica35').getContext('2d');
+                                                    const myPieChart35 = new Chart(ctx35, {
+                                                        type: 'pie',
+                                                        data: data35,
+                                                        options: options35
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
                                 </div>
                             </div>
                             <!-- Tres estrellas -->
                             <!-- Cuatro estrellas -->
                             <div class="collapse card-img-overlay" id="Cuatro-estrellas">
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <div id="Dañopsicosocial4" style="width: 200px; height: 215px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <img src=" /images/Hoteles/RP.png" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                    <div class="col-6.6 order-lg-1">
+                                            <div class="card card-h-100">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">RESULTADOS GENERALES</h4>
+                                                
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica41"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable41 = {{general4.Nuloodespreciable}};
+                                                    const bajo41 = {{general4.Bajo}};
+                                                    const medio41 = {{general4.Medio}};
+                                                    const alto41 = {{general4.Alto}};
+                                                    const muyAlto41 = {{general4.Muyalto}};
+                                                    const data41 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable41, bajo41, medio41, alto41, muyAlto41],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options41 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx41 = document.getElementById('grafica41').getContext('2d');
+                                                    const myPieChart41 = new Chart(ctx41, {
+                                                        type: 'pie',
+                                                        data: data41,
+                                                        options: options41
+                                                    });
+                                                </script>
+                    
+            
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div>  
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Acontecimientotraumaticosevero4" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">AMBIENTE DE TRABAJO </h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica42"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx42 = document.getElementById('grafica42').getContext('2d');
+                                                        const data42 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat41.Nuloodespreciable}}, {{cat41.Bajo}}, {{cat41.Medio}}, {{cat41.Alto}}, {{cat41.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options42 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart42 = new Chart(ctx42, {
+                                                            type: 'bar',
+                                                            data: data42,
+                                                            options: options42
+                                                        });
+                                                    </script>
+
+
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->  
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/ATS.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">FACTORES PROPIOS DE LA ACTIVIDAD</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica43"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx43 = document.getElementById('grafica43').getContext('2d');
+                                                        const data43 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat42.Nuloodespreciable}}, {{cat42.Bajo}}, {{cat42.Medio}}, {{cat42.Alto}}, {{cat42.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options43 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart43 = new Chart(ctx43, {
+                                                            type: 'bar',
+                                                            data: data43,
+                                                            options: options43
+                                                        });
+                                                    </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Entornoorganizacional4" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title"> ORGANIZACION DEL TIEMPO DE TRABAJO</h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica44"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable44 = {{cat43.Nuloodespreciable}};
+                                                    const bajo44 = {{cat43.Bajo}};
+                                                    const medio44 = {{cat43.Medio}};
+                                                    const alto44 = {{cat43.Alto}};
+                                                    const muyAlto44 = {{cat43.Muyalto}};
+                                                    const data44 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable44, bajo44, medio44, alto44, muyAlto44],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options44 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx44 = document.getElementById('grafica44').getContext('2d');
+                                                    const myPieChart44 = new Chart(ctx44, {
+                                                        type: 'pie',
+                                                        data: data44,
+                                                        options: options44
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/EO.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">LIDERAZGO Y RELACIONES EN EL TRABAJO</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica45"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable45 = {{cat44.Nuloodespreciable}};
+                                                    const bajo45= {{cat44.Bajo}};
+                                                    const medio45 = {{cat44.Medio}};
+                                                    const alto45= {{cat44.Alto}};
+                                                    const muyAlto45= {{cat44.Muyalto}};
+                                                    const data45 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable45, bajo45, medio45, alto45, muyAlto45],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options45 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx45 = document.getElementById('grafica45').getContext('2d');
+                                                    const myPieChart45 = new Chart(ctx45, {
+                                                        type: 'pie',
+                                                        data: data45,
+                                                        options: options45
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
                                 </div>
                             </div>
                             <!-- Cuatro estrellas -->
                             <!-- Cinco estrellas -->
                             <div class="collapse card-img-overlay" id="Cinco-estrellas">
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <div id="Dañopsicosocial5" style="width: 200px; height: 215px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
-                                        <div class="card">
-                                            <img src=" /images/Hoteles/RP.png" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                    <div class="col-6.6 order-lg-1">
+                                            <div class="card card-h-100">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">RESULTADOS GENERALES</h4>
+                                                
+                                            </div>
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica51"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable51 = {{general5.Nuloodespreciable}};
+                                                    const bajo51 = {{general5.Bajo}};
+                                                    const medio51 = {{general5.Medio}};
+                                                    const alto51 = {{general5.Alto}};
+                                                    const muyAlto51 = {{general5.Muyalto}};
+                                                    const data51 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable51, bajo51, medio51, alto51, muyAlto51],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options51 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx51 = document.getElementById('grafica51').getContext('2d');
+                                                    const myPieChart51 = new Chart(ctx51, {
+                                                        type: 'pie',
+                                                        data: data51,
+                                                        options: options51
+                                                    });
+                                                </script>
+                    
+            
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div>  
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Acontecimientotraumaticosevero5" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">AMBIENTE DE TRABAJO </h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica52"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx52 = document.getElementById('grafica52').getContext('2d');
+                                                        const data52 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat51.Nuloodespreciable}}, {{cat51.Bajo}}, {{cat51.Medio}}, {{cat51.Alto}}, {{cat51.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options52 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart52 = new Chart(ctx52, {
+                                                            type: 'bar',
+                                                            data: data52,
+                                                            options: options52
+                                                        });
+                                                    </script>
+
+
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->  
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/ATS.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">FACTORES PROPIOS DE LA ACTIVIDAD</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica53"></canvas>
+                                                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                    <script>
+                                                        const ctx53 = document.getElementById('grafica53').getContext('2d');
+                                                        const data53 = {
+                                                            labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                            datasets: [{
+                                                                label: 'Puntaje',
+                                                                data: [{{cat52.Nuloodespreciable}}, {{cat52.Bajo}}, {{cat52.Medio}}, {{cat52.Alto}}, {{cat52.Muyalto}}],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
+                                                                borderWidth: 1
+                                                            }]
+                                                        };
+                                                        const options53 = {
+                                                            scales: {
+                                                                yAxes: [{
+                                                                    ticks: {
+                                                                        beginAtZero: true
+                                                                    }
+                                                                }]
+                                                            },
+                                                            responsive: true,
+                                                            maintainAspectRatio: false
+                                                        };
+                                                        const myBarChart53 = new Chart(ctx53, {
+                                                            type: 'bar',
+                                                            data: data53,
+                                                            options: options53
+                                                        });
+                                                    </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
                                 </div>
                                 <div class="row">
-                                    <div class="col-6 order-lg-1">
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <div id="Entornoorganizacional5" style="width: 200px; height: 200px;" class="justify-content-center"></div>
-                                        </div> <!-- end card-->    
-                                    </div>
-                                    <div class="col-6 order-lg-1">
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title"> ORGANIZACION DEL TIEMPO DE TRABAJO</h4>
+                                            
+                                            </div>
+
+                                            <div class="card-body pt-0">
+
+                                                <canvas id="grafica54"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable54 = {{cat53.Nuloodespreciable}};
+                                                    const bajo54 = {{cat53.Bajo}};
+                                                    const medio54 = {{cat53.Medio}};
+                                                    const alto54 = {{cat53.Alto}};
+                                                    const muyAlto54 = {{cat53.Muyalto}};
+                                                    const data54 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable54, bajo54, medio54, alto54, muyAlto54],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options54 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx54 = document.getElementById('grafica54').getContext('2d');
+                                                    const myPieChart54 = new Chart(ctx54, {
+                                                        type: 'pie',
+                                                        data: data54,
+                                                        options: options54
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
+                                    <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
                                         <div class="card">
-                                            <img src=" /images/Hoteles/EO.jpg" class="height: 10 img-fluid">
-                                        </div> <!-- end card-->    
-                                    </div>    
+                                            <div class="d-flex card-header justify-content-between align-items-center">
+                                                <h4 class="header-title">LIDERAZGO Y RELACIONES EN EL TRABAJO</h4>
+                                                
+                                            </div>
+
+                                            <div class="card-body pt-0">
+                                                <canvas id="grafica55"></canvas>
+                                                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                                <script>
+                                                    const nuloOdespreciable55 = {{cat54.Nuloodespreciable}};
+                                                    const bajo55= {{cat54.Bajo}};
+                                                    const medio55 = {{cat54.Medio}};
+                                                    const alto55= {{cat54.Alto}};
+                                                    const muyAlto55= {{cat54.Muyalto}};
+                                                    const data55 = {
+                                                        labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
+                                                        datasets: [
+                                                            {
+                                                                data: [nuloOdespreciable55, bajo55, medio55, alto55, muyAlto55],
+                                                                backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
+                                                            }
+                                                        ]
+                                                    };
+                                                    const options55 = {
+                                                        responsive: true,
+                                                        maintainAspectRatio: false
+                                                    };
+                                                    const ctx55 = document.getElementById('grafica55').getContext('2d');
+                                                    const myPieChart55 = new Chart(ctx55, {
+                                                        type: 'pie',
+                                                        data: data55,
+                                                        options: options55
+                                                    });
+                                                </script>
+                                                
+                                            </div> <!-- end card-body-->
+                                        </div> <!-- end card-->
+                                    </div> <!-- end col-->
                                 </div>
                             </div>
                             <!-- Cinco estrellas -->
@@ -1116,399 +2045,6 @@
                 </div>
             </div>
         </div>        
-        
-        <html>
-            <!--Daño Psicosocial-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Daño Psicosocial'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Dañopsicosocial1'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Daño Psicosocial-->
-            <!--Acontecimientos traumaticos severos-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Acontecimiento Traumatico Severo'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Acontecimientotraumaticosevero1'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Acontecimientos traumaticos severos-->
-            <!--Entorno organizacional-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Enterno Organizacional'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Entornoorganizacional1'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Entorno organizacional-->
-            <!--Daño Psicosocial-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Daño Psicosocial'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Dañopsicosocial2'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Daño Psicosocial-->
-            <!--Acontecimientos traumaticos severos-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Acontecimiento Traumatico Severo'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Acontecimientotraumaticosevero2'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Acontecimientos traumaticos severos-->
-            <!--Entorno organizacional-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Enterno Organizacional'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Entornoorganizacional2'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Entorno organizacional-->
-            <!--Daño Psicosocial-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Daño Psicosocial'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Dañopsicosocial3'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Daño Psicosocial-->
-            <!--Acontecimientos traumaticos severos-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Acontecimiento Traumatico Severo'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Acontecimientotraumaticosevero3'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Acontecimientos traumaticos severos-->
-            <!--Entorno organizacional-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Enterno Organizacional'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Entornoorganizacional3'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Entorno organizacional-->
-            <!--Daño Psicosocial-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Daño Psicosocial'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Dañopsicosocial4'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Daño Psicosocial-->
-            <!--Acontecimientos traumaticos severos-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Acontecimiento Traumatico Severo'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Acontecimientotraumaticosevero4'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Acontecimientos traumaticos severos-->
-            <!--Entorno organizacional-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Enterno Organizacional'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Entornoorganizacional4'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Entorno organizacional-->
-            <!--Daño Psicosocial-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Daño Psicosocial'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Dañopsicosocial5'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Daño Psicosocial-->
-            <!--Acontecimientos traumaticos severos-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Acontecimiento Traumatico Severo'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Acontecimientotraumaticosevero5'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Acontecimientos traumaticos severos-->
-            <!--Entorno organizacional-->
-            <head>
-                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                <script type="text/javascript">
-                google.charts.load('current', {'packages':['corechart']});
-                google.charts.setOnLoadCallback(drawChart);
-
-                function drawChart() {
-
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    ['Con daño', 4],
-                    ['Sin daño', 2]
-                    ]);
-
-                    var options = {
-                    title: 'Enterno Organizacional'
-                    };
-
-                    var chart = new google.visualization.PieChart(document.getElementById('Entornoorganizacional5'));
-
-                    chart.draw(data, options);
-                }
-                </script>
-            </head>
-            <!--Entorno organizacional-->
-        </html>
 
         <!-- Vendor js -->
         <script src="/js/vendor.min.js"></script>

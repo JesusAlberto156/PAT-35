@@ -397,4 +397,6 @@ helpers.genLinks = (arr, idHotel, idEncuesta) => {
   return arr;
 }
 
+
+
 module.exports = helpers;

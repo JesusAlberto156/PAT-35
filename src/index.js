@@ -26,6 +26,7 @@ app.engine('.hbs', exphbs({
 }));
 app.set('view engine', '.hbs');
 
+
 //middlewares
 app.use(session({
     secret: 'mysqlnodesession',
