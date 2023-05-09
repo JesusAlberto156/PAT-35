@@ -4,6 +4,20 @@ const {isLoggedIn} =require('../lib/auth');
 
 const pool = require('../database');
 const helpers = require('../lib/helpers');
+const handlebars = require('handlebars');
+
+handlebars.registerHelper('times', function(n, block) {
+  let accum = '';
+  for (let i = 0; i < n; ++i) {
+    accum += block.fn(i);
+  }
+  return accum;
+});
+
+handlebars.registerHelper('eq', function(a, b) {
+    return a === b;
+  });
+  
 
 router.get('/home',isLoggedIn,async (req, res) => {
    
@@ -1194,13 +1208,30 @@ router.get('/verEncuesta/:idEncuesta/:idEmpleado',async (req, res) => {
 });
 
 router.get('/administrador',async (req, res) => {
-    
-    res.render('PAT-035/administrador');
+    const hoteles = await pool.query('SELECT H.id, H.nombre, H.telefono,HA.correo, H.rfc, H.tipo, HA.estatus FROM hotel AS H INNER JOIN hotel_access AS HA ON H.id = HA.id');
+    console.log(hoteles);
+    res.render('PAT-035/administrador', {hoteles});
 });
 
 router.get('/addHotelAdmin',async (req, res) => {
     
     res.render('PAT-035/addHotelAdmin');
+});
+
+router.get('/desactivarHotel/:id',async (req, res) => {
+    const {id} = req.params;
+    const estado = await pool.query('SELECT estatus FROM hotel_access WHERE id = ?', [id]);
+    if (estado[0].estatus == 1){
+        await pool.query('UPDATE hotel_access set estatus = 3 WHERE id = ?', [id]);
+        req.flash('success', 'Hotel desactivado satisfactoriamente');
+        res.redirect('/PAT-035/administrador');
+    }else{
+
+    await pool.query('UPDATE hotel_access set estatus = 1 WHERE id = ?', [id]);
+    req.flash('success', 'Hotel activado satisfactoriamente');
+    res.redirect('/PAT-035/administrador');
+
+    }
 });
 
 //lsof -i :4000
