@@ -10,7 +10,7 @@ router.get('/home',isLoggedIn,async (req, res) => {
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
     const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
     if (EncuestaActiva.length>0){
-    console.log(EncuestaActiva);
+   
     let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
 
     respuestas=helpers.cambioArray(respuestas);         
@@ -28,21 +28,7 @@ router.get('/home',isLoggedIn,async (req, res) => {
     let cat2 = helpers.CAT2(totalCat2);
     let cat3 = helpers.CAT3(totalCat3);
     let cat4 = helpers.CAT3(totalCat4);
-    console.log(respuestas);
-    console.log(total);
-    console.log(general);
-    console.log(prom);
-    console.log(estadogen);
-
-    console.log(totalCat1);
-    console.log(cat1);
-    console.log(totalCat2);
-    console.log(cat2);
-    console.log(totalCat3);
-    console.log(cat3);
-    console.log(totalCat4);
-    console.log(cat4);
-    
+   
     
     
     res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});

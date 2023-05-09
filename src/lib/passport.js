@@ -30,6 +30,23 @@ passport.use('local.signin', new LocalStrategy({
 
 }));
 
+passport.use('local.signinadmin', new LocalStrategy({
+    usernameField: 'correo',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async (req, correo, password, done) => {
+    
+
+   if (correo == "adminPat@gmail.com" && password == "AdminPat782") {
+        return done(null, {id: 1, nombre: "Admin"}, req.flash('success', 'Bienvenido Admin'));
+    }else{
+        return done(null, false, req.flash('message', 'Correo o contraseña incorrecta'));
+    }
+
+}));
+
+
+
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'correo',
     passwordField: 'password', 
