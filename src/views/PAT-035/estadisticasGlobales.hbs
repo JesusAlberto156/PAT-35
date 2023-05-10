@@ -1398,37 +1398,46 @@
         </div>
         <!-- END wrapper -->
         <!-- Zoom -->
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="Zoom">
-            <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
-                <h5 class="text-white m-0">Hacer Zoom</h5>
-                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="Zoom">
+    <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
+      <h5 class="text-white m-0">Hacer Zoom</h5>
+      <button
+        type="button"
+        class="btn-close btn-close-white ms-auto"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
 
-            <div class="offcanvas-footer border-top p-3 text-center">
-                <div class="row">
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light w-100" id="reset-layout">
-                            <i class="ri-zoom-out-line font-20"></i>
-                        </button>
-                    </div>
-                    <div class="progress-w-percent col-6">
-                        <span class="fw-bold">100%</span>
+    <div class="offcanvas-footer border-top p-3 text-center">
+      <div class="row">
+        <div class="col-3">
+          <button type="button" class="btn btn-light w-100" id="reset-layout-2" onclick="updateZoomLevel()">
+            <i class="ri-zoom-out-line font-20"></i>
+          </button>
+        </div>
+        <div class="progress-w-percent col-6">
+                        <span class="fw-bold" id="zoom-level">100%</span>
                         <div class="progress progress-sm">
-                            <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" 
+                            style="width: 0%;" 
+                            aria-valuenow="0" 
+                            aria-valuemin="0" 
+                            aria-valuemax="100"></div>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light w-100" id="reset-layout">
-                            <i class="ri-zoom-in-line font-20"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="offcanvas-body p-0">
-
-            </div>
+        <div class="col-3">
+          <button type="button" class="btn btn-light w-100" id="reset-layout" onclick="updateZoomLevel()">
+            <i class="ri-zoom-in-line font-20"></i>
+          </button>
         </div>
-        <!-- Zoom -->
+      </div>
+    </div>
+    <div class="offcanvas-body p-0">
+
+    </div>
+  </div>
+  <!-- Zoom -->
 
         <!-- Theme Settings -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="theme-settings-offcanvas">
@@ -2077,7 +2086,79 @@
 
         <!-- App js -->
         <script src="/js/app.min.js"></script>
+         <script>
+                        // Obtener los elementos de la página que se deben redimensionar
+                        var pageElements = document.querySelectorAll("body, h1, h2, h3, h4, h5, h6, p, a, button, form, input, select, textarea, .form-group, .form-control,label");
 
+
+                        // Definir una variable para el nivel de zoom actual
+                        var currentZoom = 100;
+
+                        // Función para aumentar el nivel de zoom
+                        function zoomIn() {
+                        currentZoom += 10;
+                        for (var i = 0; i < pageElements.length; i++) {
+                            pageElements[i].style.fontSize = currentZoom + "%";
+                            console.log("me ejecuto +");
+                        }
+                        }
+
+                        // Función para reducir el nivel de zoom
+                        function zoomOut() {
+                        currentZoom -= 10;
+                        for (var i = 0; i < pageElements.length; i++) {
+                            pageElements[i].style.fontSize = currentZoom + "%";
+                            console.log("me ejecuto -");
+                        }
+                        }
+                        // Función para actualizar el nivel de zoom actual
+                        function updateZoomLevel() {
+                        const zoomLevel = currentZoom;
+                        document.getElementById("zoom-level").innerText = `${zoomLevel}%`;
+                        // Obtener el valor actual del zoom
+                        var zoomValue = document.getElementById("zoom-level").innerText.replace("%", "");
+                        // Actualizar la barra de progreso con el valor del zoom
+                        document.querySelector(".progress-bar").style.width = zoomValue + "%";
+
+                        }
+
+
+                        // Obtener los botones de zoom y agregarles un listener para ejecutar las funciones correspondientes
+                        document.getElementById("reset-layout").addEventListener("click", zoomIn);
+                        document.getElementById("reset-layout-2").addEventListener("click", zoomOut);
+        </script>
+
+        <!-- Style de css para hacer zoom -->
+        <style>
+                #zoom-controls {
+                  position: fixed;
+                  top: 10px;
+                  right: 10px;
+                  z-index: 9999;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 10px;
+                  background-color: #f1f1f1;
+                  padding: 10px;
+                  border-radius: 5px;
+                }
+
+                #zoom-controls button {
+                  background-color: #4CAF50;
+                  color: white;
+                  padding: 10px;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+
+                #zoom-level {
+                  font-weight: bold;
+                  font-size: 1.2em;
+                }
+      </style>
+      
     </body>
 
     <!--- https://www.npmjs.com/package/node-dependency-injection -->
