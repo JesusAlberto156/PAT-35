@@ -314,35 +314,51 @@
                                             <div class="row">
                                             <div class="col-xl-6">
                                                 <div class="mb-3">
+                                                    <label for="projectname" class="form-label" >Usuario</label>
+                                                    <input type="text" 
+                                                    id="Nom_Hotel" 
+                                                    class="form-control" 
+                                                    placeholder="Ingresar Correo"
+                                                    name="correo"
+                                                    required>
+                                                </div>
+                                                
+                                                <div class="mb-3">
                                                     <label for="projectname" class="form-label">Nombre</label>
                                                     <input type="text" 
                                                     id="Nom_Hotel" 
                                                     class="form-control" 
                                                     placeholder="Ingresar nombre del hotel"
+                                                    name="nombre"
                                                     required>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="project-overview" class="form-label">Descripcion</label>
-                                                    <textarea class="form-control" id="des_Hotel" rows="5" placeholder="Ingresar una descripcion del hotel.." required></textarea>
+                                                    <textarea class="form-control" name="descripcion" id="des_Hotel" rows="5" placeholder="Ingresar una descripcion del hotel.." required></textarea>
                                                 </div>
 
                                                 <!-- Date View -->
                                                 <div class="mb-3">
                                                     <label for="project-budget" class="form-label">Direccion</label>
-                                                    <input type="text" id="dir_Hotel" class="form-control" placeholder="Ingresar direccion del hotel" required>
+                                                    <input type="text" id="dir_Hotel" name="direccion" class="form-control" placeholder="Ingresar direccion del hotel" required>
                                                 </div>
 
                                                 <div class="mb-3">
-                                                    <label for="project-budget" class="form-label">Telefono</label>
-                                                    <input type="number" id="tel_Hotel" class="form-control" placeholder="Ingresar Telefono del hotel" required>
+                                                    <label for="projectname" class="form-label">Telefono</label>
+                                                    <input type="text" 
+                                                    id="Nom_Hotel" 
+                                                    class="form-control" 
+                                                    name="telefono"
+                                                    placeholder="+52"
+                                                    required>
                                                 </div>
 
                                                 <div class="mb-0">
                                                     <label for="project-overview" class="form-label">Tipo</label>
                                                     
-                                                    <select class="form-control select2" data-toggle="select2" required>
-                                                        <option>Seleccionar</option>
+                                                    <select class="form-control select2"  name="tipo"required>
+                                                        
                                                         <option value="5">5 estrellas</option>
                                                         <option value="4">4 estrellas</option>
                                                         <option value="3">3 estrellas</option>
@@ -350,28 +366,7 @@
                                                         <option value="1">1 estrella</option>
                                                     </select>
 
-                                                    <div class="mt-2" id="tooltip-container">
-                                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block">
-                                                            <img src=" /images/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                        </a>
-                
-                                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Michael Zenaty" class="d-inline-block">
-                                                            <img src=" /images/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                        </a>
-                
-                                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="James Anderson" class="d-inline-block">
-                                                            <img src=" /images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                        </a>
-            
-                                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Lorene Block" class="d-inline-block">
-                                                            <img src=" /images/users/avatar-4.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                        </a>
-                
-                                                        <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Mike Baker" class="d-inline-block">
-                                                            <img src=" /images/users/avatar-5.jpg" class="rounded-circle avatar-xs" alt="friend">
-                                                        </a>
-                                                    </div>
-        
+                                                    
                                                 </div>
 
                                             </div> <!-- end col-->
@@ -381,7 +376,7 @@
                                                 <!-- Date View -->
                                                 <div class="mb-3">
                                                     <label for="project-budget" class="form-label">RFC</label>
-                                                    <input type="text" id="project-budget" class="form-control" placeholder="Ingresa RFC del hotel" required>
+                                                    <input type="text" name="rfc" id="project-budget" class="form-control" placeholder="Ingresa RFC del hotel" required>
                                                 </div>
                                                   <div class="col-sm-4">
                                                   <button type="submit" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i> Agregar Hotel</button>

@@ -21,9 +21,13 @@ passport.use('local.signin', new LocalStrategy({
             }else{
                 return done(null, false, req.flash('message', 'El correo no existe'));
             }  
-        }else{
+        }else if(hotel[0].estatus == 0){
             return done(null, false, req.flash('message', 'La cuenta no ha sido activada'));
+        }else if(hotel[0].estatus == 3){
+            return done(null, false, req.flash('message', 'La cuenta ha sido bloqueada'));
         }
+
+
     }else{
         return done(null, false, req.flash('message', 'El correo no existe'));  
     }
@@ -36,7 +40,6 @@ passport.use('local.signinadmin', new LocalStrategy({
     passReqToCallback: true
 }, async (req, correo, password, done) => {
     
-
    if (correo == "adminPat@gmail.com" && password == "AdminPat782") {
         return done(null, {id: 1, nombre: "Admin"}, req.flash('success', 'Bienvenido Admin'));
     }else{
