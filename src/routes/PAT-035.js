@@ -38056,6 +38056,21 @@ router.get('/estadisticasGlobales-2026',isLoggedIn,async (req, res) => {
 });
 //Estadisticas globales de 2026
 
+//agregar hotel---------------------> paul
+router.post('/addHotelAdmin2', async (req, res) => {
+    const { descripcion, direccion, nombre, rfc, telefono, tipo } = req.body;
+    const newHotel = {
+      descripcion,
+      direccion,
+      nombre,
+      rfc,
+      telefono,
+      tipo
+    };
+    await pool.query('INSERT INTO hotel SET ?', [newHotel]);
+    req.flash('success', 'Hotel agregado');
+    console.log("entre");
+  });
 
 
 module.exports = router;

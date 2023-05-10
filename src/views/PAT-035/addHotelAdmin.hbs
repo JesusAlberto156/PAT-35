@@ -310,34 +310,38 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-
-                                        <div class="row">
+                                        <form method="POST" action="/PAT-035/addHotelAdmin2">
+                                            <div class="row">
                                             <div class="col-xl-6">
                                                 <div class="mb-3">
                                                     <label for="projectname" class="form-label">Nombre</label>
-                                                    <input type="text" id="projectname" class="form-control" placeholder="Ingresar nombre del hotel">
+                                                    <input type="text" 
+                                                    id="Nom_Hotel" 
+                                                    class="form-control" 
+                                                    placeholder="Ingresar nombre del hotel"
+                                                    required>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="project-overview" class="form-label">Descripcion</label>
-                                                    <textarea class="form-control" id="project-overview" rows="5" placeholder="Ingresar una descripcion del hotel.."></textarea>
+                                                    <textarea class="form-control" id="des_Hotel" rows="5" placeholder="Ingresar una descripcion del hotel.." required></textarea>
                                                 </div>
 
                                                 <!-- Date View -->
                                                 <div class="mb-3">
                                                     <label for="project-budget" class="form-label">Direccion</label>
-                                                    <input type="text" id="project-budget" class="form-control" placeholder="Ingresar direccion del hotel">
+                                                    <input type="text" id="dir_Hotel" class="form-control" placeholder="Ingresar direccion del hotel" required>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="project-budget" class="form-label">Telefono</label>
-                                                    <input type="number" id="project-budget" class="form-control" placeholder="Ingresar Telefono del hotel">
+                                                    <input type="number" id="tel_Hotel" class="form-control" placeholder="Ingresar Telefono del hotel" required>
                                                 </div>
 
                                                 <div class="mb-0">
                                                     <label for="project-overview" class="form-label">Tipo</label>
                                                     
-                                                    <select class="form-control select2" data-toggle="select2">
+                                                    <select class="form-control select2" data-toggle="select2" required>
                                                         <option>Seleccionar</option>
                                                         <option value="5">5 estrellas</option>
                                                         <option value="4">4 estrellas</option>
@@ -377,12 +381,17 @@
                                                 <!-- Date View -->
                                                 <div class="mb-3">
                                                     <label for="project-budget" class="form-label">RFC</label>
-                                                    <input type="text" id="project-budget" class="form-control" placeholder="Ingresa RFC del hotel">
+                                                    <input type="text" id="project-budget" class="form-control" placeholder="Ingresa RFC del hotel" required>
                                                 </div>
-                                                <div class="col-sm-4">
-                                                    <a href="apps-projects-add.html" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i> Agregar Hotel</a>
+                                                  <div class="col-sm-4">
+                                                  <button type="submit" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i> Agregar Hotel</button>
                                                 </div>
                                             </div> <!-- end col-->
+
+                                        </form>
+                                        
+
+                                            
                                         </div>
                                         <!-- end row -->
 
