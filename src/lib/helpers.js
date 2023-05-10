@@ -391,7 +391,7 @@ helpers.colorGen= (valor) => {
 
 helpers.genLinks = (arr, idHotel, idEncuesta) => {
   arr.forEach(obj => {
-    obj.telefono = `521${obj.telefono}`;
+    obj.telefono = `+521${obj.telefono}`;
     obj.link = `http://localhost:4000/${idHotel}/${idEncuesta}/encuesta/${obj.idEmpleado}`;
   });
   return arr;

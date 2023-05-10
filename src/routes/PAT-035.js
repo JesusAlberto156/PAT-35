@@ -5,7 +5,6 @@ const {isLoggedIn} =require('../lib/auth');
 const pool = require('../database');
 const helpers = require('../lib/helpers');
 
-
 const handlebars = require('handlebars');
 
 handlebars.registerHelper('times', function(n, block) {
@@ -19,179 +18,6 @@ handlebars.registerHelper('times', function(n, block) {
 handlebars.registerHelper('eq', function(a, b) {
     return a === b;
   });
-  
-
-
-// Inicio de todos los tiempos
-router.get('/home',isLoggedIn,async (req, res) => {
-   
-    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
-    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
-    if (EncuestaActiva.length>0){
-   
-    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
-
-    respuestas=helpers.cambioArray(respuestas);         
-    let total = helpers.total(respuestas);
-    const general = helpers.general(total);
-    let prom = helpers.promedioGeneral(total);
-    let accionGen = helpers.accionGen(prom);
-    let estadogen = helpers.estadoGen(prom);
-    let colorGen = helpers.colorGen(prom);
-    let totalCat1 = helpers.totalCAT1(respuestas);
-    let totalCat2 = helpers.totalCAT2(respuestas);
-    let totalCat3 = helpers.totalCAT3(respuestas);
-    let totalCat4 = helpers.totalCAT4(respuestas);
-    let cat1 = helpers.CAT1(totalCat1);
-    let cat2 = helpers.CAT2(totalCat2);
-    let cat3 = helpers.CAT3(totalCat3);
-    let cat4 = helpers.CAT3(totalCat4);
-   
-    
-    
-    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
-    }else{
-        res.render('PAT-035/home', {hotel: hotel[0]});
-    }
-    
-});
-// Inicio de todos los tiempos
-// Inicio de 2023
-router.get('/home-2023',isLoggedIn,async (req, res) => {
-   
-    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
-    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2023', req.user.id);
-    if (EncuestaActiva.length>0){
-   
-    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
-
-    respuestas=helpers.cambioArray(respuestas);         
-    let total = helpers.total(respuestas);
-    const general = helpers.general(total);
-    let prom = helpers.promedioGeneral(total);
-    let accionGen = helpers.accionGen(prom);
-    let estadogen = helpers.estadoGen(prom);
-    let colorGen = helpers.colorGen(prom);
-    let totalCat1 = helpers.totalCAT1(respuestas);
-    let totalCat2 = helpers.totalCAT2(respuestas);
-    let totalCat3 = helpers.totalCAT3(respuestas);
-    let totalCat4 = helpers.totalCAT4(respuestas);
-    let cat1 = helpers.CAT1(totalCat1);
-    let cat2 = helpers.CAT2(totalCat2);
-    let cat3 = helpers.CAT3(totalCat3);
-    let cat4 = helpers.CAT3(totalCat4);
-   
-    
-    
-    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
-    }else{
-        res.render('PAT-035/home', {hotel: hotel[0]});
-    }
-    
-});
-// Inicio de 2023
-// Inicio de 2024
-router.get('/home-2024',isLoggedIn,async (req, res) => {
-   
-    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
-    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2024', req.user.id);
-    if (EncuestaActiva.length>0){
-   
-    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
-
-    respuestas=helpers.cambioArray(respuestas);         
-    let total = helpers.total(respuestas);
-    const general = helpers.general(total);
-    let prom = helpers.promedioGeneral(total);
-    let accionGen = helpers.accionGen(prom);
-    let estadogen = helpers.estadoGen(prom);
-    let colorGen = helpers.colorGen(prom);
-    let totalCat1 = helpers.totalCAT1(respuestas);
-    let totalCat2 = helpers.totalCAT2(respuestas);
-    let totalCat3 = helpers.totalCAT3(respuestas);
-    let totalCat4 = helpers.totalCAT4(respuestas);
-    let cat1 = helpers.CAT1(totalCat1);
-    let cat2 = helpers.CAT2(totalCat2);
-    let cat3 = helpers.CAT3(totalCat3);
-    let cat4 = helpers.CAT3(totalCat4);
-   
-    
-    
-    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
-    }else{
-        res.render('PAT-035/home', {hotel: hotel[0]});
-    }
-    
-});
-// Inicio de 2024
-// Inicio de 2025
-router.get('/home-2025',isLoggedIn,async (req, res) => {
-   
-    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
-    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2025', req.user.id);
-    if (EncuestaActiva.length>0){
-   
-    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
-
-    respuestas=helpers.cambioArray(respuestas);         
-    let total = helpers.total(respuestas);
-    const general = helpers.general(total);
-    let prom = helpers.promedioGeneral(total);
-    let accionGen = helpers.accionGen(prom);
-    let estadogen = helpers.estadoGen(prom);
-    let colorGen = helpers.colorGen(prom);
-    let totalCat1 = helpers.totalCAT1(respuestas);
-    let totalCat2 = helpers.totalCAT2(respuestas);
-    let totalCat3 = helpers.totalCAT3(respuestas);
-    let totalCat4 = helpers.totalCAT4(respuestas);
-    let cat1 = helpers.CAT1(totalCat1);
-    let cat2 = helpers.CAT2(totalCat2);
-    let cat3 = helpers.CAT3(totalCat3);
-    let cat4 = helpers.CAT3(totalCat4);
-   
-    
-    
-    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
-    }else{
-        res.render('PAT-035/home', {hotel: hotel[0]});
-    }
-    
-});
-// Inicio de 2025
-// Inicio de 2026
-router.get('/home-2026',isLoggedIn,async (req, res) => {
-   
-    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
-    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2026', req.user.id);
-    if (EncuestaActiva.length>0){
-   
-    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
-
-    respuestas=helpers.cambioArray(respuestas);         
-    let total = helpers.total(respuestas);
-    const general = helpers.general(total);
-    let prom = helpers.promedioGeneral(total);
-    let accionGen = helpers.accionGen(prom);
-    let estadogen = helpers.estadoGen(prom);
-    let colorGen = helpers.colorGen(prom);
-    let totalCat1 = helpers.totalCAT1(respuestas);
-    let totalCat2 = helpers.totalCAT2(respuestas);
-    let totalCat3 = helpers.totalCAT3(respuestas);
-    let totalCat4 = helpers.totalCAT4(respuestas);
-    let cat1 = helpers.CAT1(totalCat1);
-    let cat2 = helpers.CAT2(totalCat2);
-    let cat3 = helpers.CAT3(totalCat3);
-    let cat4 = helpers.CAT3(totalCat4);
-   
-    
-    
-    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
-    }else{
-        res.render('PAT-035/home', {hotel: hotel[0]});
-    }
-    
-});
-// Inicio de 2026
 
 router.get('/empleados',isLoggedIn,async (req, res) => {
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
@@ -388,6 +214,176 @@ router.get('/addHotelAdmin',async (req, res) => {
 //lsof -i :4000
 //kill -9 PID
 
+// Inicio de todos los tiempos
+router.get('/home',isLoggedIn,async (req, res) => {
+   
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
+    if (EncuestaActiva.length>0){
+   
+    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+
+    respuestas=helpers.cambioArray(respuestas);         
+    let total = helpers.total(respuestas);
+    const general = helpers.general(total);
+    let prom = helpers.promedioGeneral(total);
+    let accionGen = helpers.accionGen(prom);
+    let estadogen = helpers.estadoGen(prom);
+    let colorGen = helpers.colorGen(prom);
+    let totalCat1 = helpers.totalCAT1(respuestas);
+    let totalCat2 = helpers.totalCAT2(respuestas);
+    let totalCat3 = helpers.totalCAT3(respuestas);
+    let totalCat4 = helpers.totalCAT4(respuestas);
+    let cat1 = helpers.CAT1(totalCat1);
+    let cat2 = helpers.CAT2(totalCat2);
+    let cat3 = helpers.CAT3(totalCat3);
+    let cat4 = helpers.CAT3(totalCat4);
+   
+    
+    
+    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
+    }else{
+        res.render('PAT-035/home', {hotel: hotel[0]});
+    }
+    
+});
+// Inicio de todos los tiempos
+// Inicio de 2023
+router.get('/home-2023',isLoggedIn,async (req, res) => {
+   
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2023', req.user.id);
+    if (EncuestaActiva.length>0){
+   
+    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+
+    respuestas=helpers.cambioArray(respuestas);         
+    let total = helpers.total(respuestas);
+    const general = helpers.general(total);
+    let prom = helpers.promedioGeneral(total);
+    let accionGen = helpers.accionGen(prom);
+    let estadogen = helpers.estadoGen(prom);
+    let colorGen = helpers.colorGen(prom);
+    let totalCat1 = helpers.totalCAT1(respuestas);
+    let totalCat2 = helpers.totalCAT2(respuestas);
+    let totalCat3 = helpers.totalCAT3(respuestas);
+    let totalCat4 = helpers.totalCAT4(respuestas);
+    let cat1 = helpers.CAT1(totalCat1);
+    let cat2 = helpers.CAT2(totalCat2);
+    let cat3 = helpers.CAT3(totalCat3);
+    let cat4 = helpers.CAT3(totalCat4);
+   
+    
+    
+    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
+    }else{
+        res.render('PAT-035/home', {hotel: hotel[0]});
+    }
+    
+});
+// Inicio de 2023
+// Inicio de 2024
+router.get('/home-2024',isLoggedIn,async (req, res) => {
+   
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2024', req.user.id);
+    if (EncuestaActiva.length>0){
+   
+    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+
+    respuestas=helpers.cambioArray(respuestas);         
+    let total = helpers.total(respuestas);
+    const general = helpers.general(total);
+    let prom = helpers.promedioGeneral(total);
+    let accionGen = helpers.accionGen(prom);
+    let estadogen = helpers.estadoGen(prom);
+    let colorGen = helpers.colorGen(prom);
+    let totalCat1 = helpers.totalCAT1(respuestas);
+    let totalCat2 = helpers.totalCAT2(respuestas);
+    let totalCat3 = helpers.totalCAT3(respuestas);
+    let totalCat4 = helpers.totalCAT4(respuestas);
+    let cat1 = helpers.CAT1(totalCat1);
+    let cat2 = helpers.CAT2(totalCat2);
+    let cat3 = helpers.CAT3(totalCat3);
+    let cat4 = helpers.CAT3(totalCat4);
+   
+    
+    
+    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
+    }else{
+        res.render('PAT-035/home', {hotel: hotel[0]});
+    }
+    
+});
+// Inicio de 2024
+// Inicio de 2025
+router.get('/home-2025',isLoggedIn,async (req, res) => {
+   
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2025', req.user.id);
+    if (EncuestaActiva.length>0){
+   
+    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+
+    respuestas=helpers.cambioArray(respuestas);         
+    let total = helpers.total(respuestas);
+    const general = helpers.general(total);
+    let prom = helpers.promedioGeneral(total);
+    let accionGen = helpers.accionGen(prom);
+    let estadogen = helpers.estadoGen(prom);
+    let colorGen = helpers.colorGen(prom);
+    let totalCat1 = helpers.totalCAT1(respuestas);
+    let totalCat2 = helpers.totalCAT2(respuestas);
+    let totalCat3 = helpers.totalCAT3(respuestas);
+    let totalCat4 = helpers.totalCAT4(respuestas);
+    let cat1 = helpers.CAT1(totalCat1);
+    let cat2 = helpers.CAT2(totalCat2);
+    let cat3 = helpers.CAT3(totalCat3);
+    let cat4 = helpers.CAT3(totalCat4);
+   
+    
+    
+    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
+    }else{
+        res.render('PAT-035/home', {hotel: hotel[0]});
+    }
+    
+});
+// Inicio de 2025
+// Inicio de 2026
+router.get('/home-2026',isLoggedIn,async (req, res) => {
+   
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+    const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0 AND YEAR(fecha) = 2026', req.user.id);
+    if (EncuestaActiva.length>0){
+   
+    let respuestas = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
+
+    respuestas=helpers.cambioArray(respuestas);         
+    let total = helpers.total(respuestas);
+    const general = helpers.general(total);
+    let prom = helpers.promedioGeneral(total);
+    let accionGen = helpers.accionGen(prom);
+    let estadogen = helpers.estadoGen(prom);
+    let colorGen = helpers.colorGen(prom);
+    let totalCat1 = helpers.totalCAT1(respuestas);
+    let totalCat2 = helpers.totalCAT2(respuestas);
+    let totalCat3 = helpers.totalCAT3(respuestas);
+    let totalCat4 = helpers.totalCAT4(respuestas);
+    let cat1 = helpers.CAT1(totalCat1);
+    let cat2 = helpers.CAT2(totalCat2);
+    let cat3 = helpers.CAT3(totalCat3);
+    let cat4 = helpers.CAT3(totalCat4);
+   
+    
+    
+    res.render('PAT-035/home', {hotel: hotel[0],general,accionGen,estadogen,colorGen,cat1,cat2,cat3,cat4});
+    }else{
+        res.render('PAT-035/home', {hotel: hotel[0]});
+    }
+    
+});
+// Inicio de 2026
 //Reporte de todos los tiempos
 router.get('/reportes',isLoggedIn,async (req, res) => {  
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
