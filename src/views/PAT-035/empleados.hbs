@@ -342,6 +342,8 @@
           <div class="card">
             <div class="row">
               <div class="col-12">
+                <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#Pregunta45"><i class="uil-comment-alt-message"></i> Enviar Mensaje</button>
+               
                 <form action="/enviar" method="POST">
                   <button class="btn btn-primary rounded-pill" type="submit"><i class="uil-comment-alt-message"></i> Enviar Mensaje</button>
                   {{#each links}}
@@ -824,6 +826,58 @@
       </div>
     </div>
   </form>
+
+
+  
+          <div class="modal fade" id="Pregunta45" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true" >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                 
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                 <div class="card-body pt-2">
+                  <div class="table-responsive" style="overflow-x: auto; ">
+                    <table class="table table-centered table-nowrap mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col">link</th>
+                          <th scope="col">Telefono</th>
+                        
+                          <th scope="col" class="text-end">Accion</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#each links}}
+                       
+                          <tr>
+                            <td>
+                              {{link}}
+                            </td>
+                            <td >{{telefono}}</td>
+                            
+                            
+
+                            <td class="text-end">
+                              
+                              <a
+                                href="/PAT-035/deleteEmpleado/{{idEmpleado}}"
+                                class="font-18  "
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Enviar Mensaje"
+                              ><i class="uil-comment-alt-message"></i></a>
+                            </td>
+                          </tr>
+                          <!-- end tr -->
+                        {{/each}}
+                
+              
+               
+              </div>
+            </div>
+          </div>
+       
 
   <!-- Theme Settings -->
   <div
