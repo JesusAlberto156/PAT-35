@@ -356,6 +356,30 @@ router.get('/desactivarHotel/:id',async (req, res) => {
     }
 });
 
+router.get('/EditHotelAdmin/:id',async (req, res) => {
+    const {id} = req.params;
+    const hotel = await pool.query('SELECT H.id, H.nombre,H.descripcion,H.direccion, H.telefono,HA.correo, H.rfc, H.tipo, HA.estatus FROM hotel AS H INNER JOIN hotel_access AS HA ON H.id = HA.id WHERE H.id = ?', [id]);
+    console.log(hotel);
+    res.render('PAT-035/EditHotelAdmin', {hotel: hotel[0]});
+});
+router.post('/EditHotelAdmin/:id',async (req, res) => {
+   
+    const {id} = req.params;
+    const {nombre, descripcion, direccion, telefono, correo, rfc, tipo} = req.body;
+    const newHotel = {
+        nombre,
+        direccion,
+        telefono,
+        rfc,
+        descripcion,
+        tipo
+    };
+    await pool.query('UPDATE hotel set ? WHERE id = ?', [newHotel, id]);
+    await pool.query('UPDATE hotel_access set correo = ? WHERE id = ?', [correo, id]);
+    req.flash('success', 'Hotel actualizado satisfactoriamente');
+    res.redirect('/PAT-035/administrador');
+});
+
 router.get('/addHotelAdmin',async (req, res) => {
     
     res.render('PAT-035/addHotelAdmin');

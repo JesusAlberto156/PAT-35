@@ -49,7 +49,10 @@
 
                         <!-- Topbar Search Form -->
                         <div class="app-search dropdown d-none d-lg-block">
-                            
+                            <form>
+                                
+                            </form>
+
                             <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
                                 <!-- item-->
                                 <div class="dropdown-header noti-title">
@@ -118,6 +121,7 @@
                             </div>
                         </li>
 
+
                         <li class="d-none d-sm-inline-block">
                             <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
                                 <i class="ri-settings-3-line font-22"></i>
@@ -157,11 +161,30 @@
                                 <a href="javascript:void(0);" class="dropdown-item">
                                     <i class="mdi mdi-account-circle me-1"></i>
                                     <span>My Account</span>
-                                </a>                        
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-account-edit me-1"></i>
+                                    <span>Settings</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-lifebuoy me-1"></i>
+                                    <span>Support</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item">
+                                    <i class="mdi mdi-lock-outline me-1"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
                                     <i class="mdi mdi-logout me-1"></i>
-                                    <span>Cerrar Sesión</span>
+                                    <span>Logout</span>
                                 </a>
                             </div>
                         </li>
@@ -224,6 +247,30 @@
                                 <span class="badge bg-success float-end">5</span>
                                 <span> Inicio </span>
                             </a>
+                            <div class="collapse" id="sidebarDashboards">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="dashboard-analytics.html">Analytics</a>
+                                    </li>
+                                    <li>
+                                        <a href="index.html">Ecommerce</a>
+                                    </li>
+                                    <li>
+                                        <a href="dashboard-projects.html">Projects</a>
+                                    </li>
+                                    <li>
+                                        <a href="dashboard-crm.html">CRM</a>
+                                    </li>
+                                    <li>
+                                        <a href="dashboard-wallet.html">E-Wallet</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                       
+
+
                     </ul>
                     <!--- End Sidemenu -->
 
@@ -249,11 +296,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            
-                                            <li class="breadcrumb-item active">SuperAdministrador</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Inicio</a></li>
+                                            <li class="breadcrumb-item active">Agregar Hotel</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">SuperAdministrador</h4>
+                                    <h4 class="page-title">Agregar Hotel</h4>
                                 </div>
                             </div>
                         </div>
@@ -263,97 +310,135 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col-sm-5">
-                                                <a href="/PAT-035/addHotelAdmin" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Agregar Hotel</a>
-                                            </div>
-                                            <div class="col-sm-7">
-                                                <div class="text-sm-end">
-                                                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog-outline"></i></button>
-                                                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                                                    <button type="button" class="btn btn-light mb-2">Export</button>
+                                        <form method="POST" action="/PAT-035/EditHotelAdmin/{{hotel.id}}">
+                                            <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="mb-3">
+                                                    <label for="projectname" class="form-label" >Usuario</label>
+                                                    <input type="text" 
+                                                    id="Nom_Hotel" 
+                                                    class="form-control" 
+                                                    placeholder="Ingresar Correo"
+                                                    value="{{hotel.correo}}"
+                                                    name="correo"
+                                                    required>
                                                 </div>
-                                            </div><!-- end col-->
-                                        </div>
-                
-                                        <div class="table-responsive">
-                                            <table class="table table-centered w-100 dt-responsive nowrap" id="products-datatable">
-                                                <thead class="table-light">
-                                                    <tr>
-                                                        <th class="all" style="width: 20px;">
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck1">
-                                                                <label class="form-check-label" for="customCheck1">&nbsp;</label>
-                                                            </div>
-                                                        </th>
-                                                        <th class="all">Hotel</th>
-                                                        <th>RFC</th>
-                                                        <th>Correo</th>
-                                                        <th>telefono</th>
-                                                        
-                                                        
-                                                        <th>tipo</th>
-                                                        <th style="width: 85px;">Accion</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {{#each hoteles}}
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input" id="customCheck2">
-                                                                <label class="form-check-label" for="customCheck2">&nbsp;</label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <img src=" /images/users/{{id}}.jpg" alt="contact-img" title="contact-img" class="rounded me-3" height="48" />
-                                                            <p class="m-0 d-inline-block align-middle font-16">
-                                                                <a href="apps-ecommerce-products-details.html" class="text-body">{{nombre}}</a>
-                                                                <br/>
-                                                                {{#times tipo}}
-                                                                <span class="text-warning mdi mdi-star"></span>
-                                                                {{/times}}
+                                                
+                                                <div class="mb-3">
+                                                    <label for="projectname" class="form-label">Nombre</label>
+                                                    <input type="text" 
+                                                    id="Nom_Hotel" 
+                                                    class="form-control" 
+                                                    placeholder="Ingresar nombre del hotel"
+                                                    name="nombre"
+                                                    value="{{hotel.nombre}}"
+                                                    required>
+                                                </div>
 
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            {{rfc}}
-                                                        </td>
-                                                        <td>
-                                                            {{correo}}
-                                                        </td>
-                                                        <td>
-                                                            {{telefono}}
-                                                        </td>
-                    
-                                                        
-                                                        
-                                                        <td>
-                                                            {{#if (eq estatus 1)}}
-                                                             <span class="badge bg-success">Activo</span>
-                                                            {{else}}
-                                                            <span class="badge bg-danger">Inactivo</span>
-                                                            {{/if}}
+                                                <div class="mb-3">
+                                                    <label for="project-overview" class="form-label">Descripcion</label>
+                                                    <textarea class="form-control" name="descripcion" id="des_Hotel" rows="5" placeholder="Ingresar una descripcion del hotel.." required> {{hotel.descripcion}}</textarea>
+                                                </div>
 
-                                                           
-                                                        </td>
-                    
-                                                        <td class="table-action">
-                                                            <a href="/PAT-035/desactivarHotel/{{id}}" class="action-icon" title="Desactivar/Activar"> <i class="mdi mdi-eye"></i></a>
-                                                            <a href="/PAT-035/EditHotelAdmin/{{id}}" class="action-icon" title="Editar"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                           <!-- <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>-->
-                                                        </td>
-                                                    </tr>
-                                                    {{/each}}
+                                                <!-- Date View -->
+                                                <div class="mb-3">
+                                                    <label for="project-budget" class="form-label">Direccion</label>
+                                                    <input type="text" value="{{hotel.direccion}}" id="dir_Hotel" name="direccion" class="form-control" placeholder="Ingresar direccion del hotel" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="projectname" class="form-label">Telefono</label>
+                                                    <input type="text" 
+                                                    id="Nom_Hotel" 
+                                                    class="form-control" 
+                                                    name="telefono"
+                                                    placeholder="+52"
+                                                    value="{{hotel.telefono}}"
+                                                    required>
+                                                </div>
+
+                                                <div class="mb-0">
+                                                    <label for="project-overview" class="form-label">Tipo</label>
                                                     
-                                                </tbody>
-                                            </table>
+                                                    
+                                                   
+                                                    {{#if (eq hotel.tipo 1)}}
+                                                        <select class="form-control select2"  name="tipo"required>
+                                                        
+                                                        <option value="5" >5 estrellas</option>
+                                                        <option value="4">4 estrellas</option>
+                                                        <option value="3">3 estrellas</option>
+                                                        <option value="2">2 estrellas</option>
+                                                        <option value="1" selected>1 estrella</option>
+                                                    </select>
+                                                    {{else if (eq hotel.tipo 2)}}
+                                                        <select class="form-control select2"  name="tipo"required>
+                                                        
+                                                        <option value="5">5 estrellas</option>
+                                                        <option value="4">4 estrellas</option>
+                                                        <option value="3">3 estrellas</option>
+                                                        <option value="2" selected>2 estrellas</option>
+                                                        <option value="1" >1 estrella</option>
+                                                    </select>
+                                                    {{else if (eq hotel.tipo 3)}}
+                                                        <select class="form-control select2"  name="tipo"required>
+                                                        
+                                                        <option value="5">5 estrellas</option>
+                                                        <option value="4">4 estrellas</option>
+                                                        <option value="3" selected>3 estrellas</option>
+                                                        <option value="2">2 estrellas</option>
+                                                        <option value="1">1 estrella</option>
+                                                    </select>
+                                                    {{else if (eq hotel.tipo 4)}}
+                                                        <select class="form-control select2"  name="tipo"required>
+                                                        
+                                                        <option value="5">5 estrellas</option>
+                                                        <option value="4"selected>4 estrellas</option>
+                                                        <option value="3">3 estrellas</option>
+                                                        <option value="2">2 estrellas</option>
+                                                        <option value="1">1 estrella</option>
+                                                    </select>
+                                                    {{else}}
+                                                        <select class="form-control select2"  name="tipo"required>
+                                                        
+                                                        <option value="5" selected>5 estrellas</option>
+                                                        <option value="4">4 estrellas</option>
+                                                        <option value="3">3 estrellas</option>
+                                                        <option value="2">2 estrellas</option>
+                                                        <option value="1">1 estrella</option>
+                                                    </select>
+                                                    {{/if}}
+                                                    
+
+                                                    
+                                                </div>
+
+                                            </div> <!-- end col-->
+
+                                            <div class="col-xl-6">
+
+                                                <!-- Date View -->
+                                                <div class="mb-3">
+                                                    <label for="project-budget" class="form-label">RFC</label>
+                                                    <input type="text" value="{{hotel.rfc}}" name="rfc" id="project-budget" class="form-control" placeholder="Ingresa RFC del hotel" required>
+                                                </div>
+                                                  <div class="col-sm-4">
+                                                  <button type="submit" class="btn btn-danger rounded-pill mb-3"><i class="mdi mdi-plus"></i> Actualizar Hotel</button>
+                                                </div>
+                                            </div> <!-- end col-->
+
+                                        </form>
+                                        
+
+                                            
                                         </div>
-                                    </div> <!-- end card-body-->
+                                        <!-- end row -->
+
+                                    </div> <!-- end card-body -->
                                 </div> <!-- end card-->
-                            </div> <!-- end col -->
+                            </div> <!-- end col-->
                         </div>
-                        <!-- end row -->        
+                        <!-- end row-->
                         
                     </div> <!-- container -->
 
@@ -364,7 +449,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                                <script>document.write(new Date().getFullYear())</script> PAT-035
                             </div>
                             <div class="col-md-6">
                                 <div class="text-md-end footer-links d-none d-md-block">
@@ -1078,15 +1163,17 @@
         <!-- Vendor js -->
         <script src=" /js/vendor.min.js"></script>
 
-        <!-- Datatable js -->
-        <script src=" /vendor/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src=" /vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-        <script src=" /vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src=" /vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-        <script src=" /vendor/jquery-datatables-checkboxes/js/dataTables.checkboxes.min.js"></script>
+        <!-- Bootstrap Datepicker Plugin js -->
+        <script src=" /vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
-        <!-- Product Demo App js -->
-        <script src=" /js/pages/demo.products.js"></script>
+        <!-- Select2 js  -->
+        <script src=" /vendor/select2/js/select2.min.js"></script>
+
+        <!-- Dropzone File Upload js -->
+        <script src=" /vendor/dropzone/min/dropzone.min.js"></script>
+
+        <!-- init js -->
+        <script src=" /js/ui/component.fileupload.js"></script>
 
         <!-- App js -->
         <script src=" /js/app.min.js"></script>
