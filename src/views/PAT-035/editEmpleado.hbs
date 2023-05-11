@@ -12,21 +12,15 @@
                         <div class="logo-topbar">
                             <!-- Logo light -->
                             <a href="/PAT-035/home" class="logo-light">
-                                <span class="logo-lg">
-                                    <img src="" alt="logo">
-                                </span>
-                                <span class="logo-sm">
-                                    <img src="" alt="small logo">
+                                <span class="">
+                                    <img src=" /images/AHMT-sm.png" alt="small logo" height="80">
                                 </span>
                             </a>
 
                             <!-- Logo Dark -->
                             <a href="/PAT-035/home" class="logo-dark">
-                                <span class="logo-lg">
-                                    <img src="" alt="dark logo">
-                                </span>
-                                <span class="logo-sm">
-                                    <img src="" alt="small logo">
+                                <span class="">
+                                    <img src=" /images/AHMT-sm.png" alt="small logo" height="80">
                                 </span>
                             </a>
                         </div>
@@ -114,21 +108,15 @@
 
                 <!-- Brand Logo Light -->
                 <a href="/PAT-035/home" class="logo logo-light">
-                    <span class="logo-lg">
-                        <img src="" alt="logo">
-                    </span>
-                    <span class="logo-sm">
-                        <img src="" alt="small logo">
+                    <span class="">
+                        <img src=" /images/AHMT-sm.png" alt="small logo" height="80">
                     </span>
                 </a>
 
                 <!-- Brand Logo Dark -->
                 <a href="/PAT-035/home" class="logo logo-dark">
-                    <span class="logo-lg">
-                        <img src="" alt="dark logo">
-                    </span>
-                    <span class="logo-sm">
-                        <img src="" alt="small logo">
+                    <span class="">
+                        <img src=" /images/AHMT-sm.png" alt="small logo" height="80">
                     </span>
                 </a>
 
@@ -183,65 +171,73 @@
             <div class="content-page">
                 <div class="content">
 
-                    <form id="editemployeeForm" action="/PAT-035/editEmpleado/{{empleado.idEmpleado}}" method="POST">
-            <div  id="editProject" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="CreateProjectLabel">Editar Empleado</h5>
+                    <div class="container-fluid">
+                        <form id="editemployeeForm" action="/PAT-035/editEmpleado/{{empleado.idEmpleado}}" method="POST">
+                            <div  id="editProject" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content row border-top p-2">
+                                <div class="modal-header col-lg-8.8">
+                                    <h5 class="modal-title header-title fs-4" id="CreateProjectLabel">EDITAR DATOS DE EMPLEADO</h5>
+                                    
+                                </div>
+                                <div class="modal-body p-4">
+                                    <div class="mb-3">
+                                    <label for="projectName" class="form-label">Nombre Completo</label>
+                                    <input type="text" class="form-control" id="nombreform" name="nombre" placeholder="Agrega el nombre completo..." value="{{empleado.nombre}}">
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="projectPhone" class="form-label">Telefono</label>
+                                    <input type="text" class="form-control" id="projectPhone" name="telefono" placeholder="Agrega el telefono..." value="{{empleado.telefono}}">
+                                    </div>
+                                    <div class="mb-3">
+                                    <label for="projectEmail" class="form-label">Correo</label>
+                                    <input type="text" class="form-control" id="projectEmail" name="correo" placeholder="Agrega el correo..." value="{{empleado.correo}}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="projectGender" class="form-label">Sexo</label>
+                                        <select class="form-select" id="projectGender" name="sexo" value="{{empleado.sexo}}">
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                    <label for="projectPosition" class="form-label">Puesto</label>
+                                    <input type="text" class="form-control" id="projectPosition" name="puesto" placeholder="Agrega el puesto..." value="{{empleado.puesto}}">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="/PAT-035/empleados" class="btn btn-light" >Cerrar</a>
+                                    <button type="submit" class="btn btn-primary">Actualizar Empleado</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
                     
-                  </div>
-                  <div class="modal-body p-4">
-                    <div class="mb-3">
-                      <label for="projectName" class="form-label">Nombre Completo</label>
-                      <input type="text" class="form-control" id="nombreform" name="nombre" placeholder="Agrega el nombre completo..." value="{{empleado.nombre}}">
+ 
+                </div><!-- container -->
+
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <script>document.write(new Date().getFullYear())</script>
+                        © PAT035 - 35Coderthemes.com
+                        </div>
+                        <div class="col-md-6">
+                        <div class="text-md-end footer-links d-none d-md-block">
+                            <a href="javascript: void(0);">Soporte</a>
+                        </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                      <label for="projectPhone" class="form-label">Telefono</label>
-                      <input type="text" class="form-control" id="projectPhone" name="telefono" placeholder="Agrega el telefono..." value="{{empleado.telefono}}">
                     </div>
-                    <div class="mb-3">
-                      <label for="projectEmail" class="form-label">Correo</label>
-                      <input type="text" class="form-control" id="projectEmail" name="correo" placeholder="Agrega el correo..." value="{{empleado.correo}}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="projectGender" class="form-label">Sexo</label>
-                        <select class="form-select" id="projectGender" name="sexo" value="{{empleado.sexo}}">
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="projectPosition" class="form-label">Puesto</label>
-                      <input type="text" class="form-control" id="projectPosition" name="puesto" placeholder="Agrega el puesto..." value="{{empleado.puesto}}">
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="/PAT-035/home" class="btn btn-light" >Cerrar</a>
-                    <button type="submit" class="btn btn-primary">Actualizar Empleado</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-                    
-
-                        
-
-                        
-                       
-                        
-
-                </div>
-                    <!-- container -->
-
-            </div>
-                <!-- content -->
-
-                
-
-            </div>
+                </footer>
+                <!-- end Footer --> 
+            </div><!-- content -->
 
             <!-- ============================================================== -->
             <!-- End Page content -->
@@ -254,26 +250,35 @@
         <div class="offcanvas offcanvas-end" tabindex="-1" id="Zoom">
             <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
                 <h5 class="text-white m-0">Hacer Zoom</h5>
-                <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button
+                    type="button"
+                    class="btn-close btn-close-white ms-auto"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                ></button>
             </div>
 
             <div class="offcanvas-footer border-top p-3 text-center">
                 <div class="row">
                     <div class="col-3">
-                        <button type="button" class="btn btn-light w-100" id="reset-layout">
-                            <i class="ri-zoom-out-line font-20"></i>
-                        </button>
+                    <button type="button" class="btn btn-light w-100" id="reset-layout-2" onclick="updateZoomLevel()">
+                        <i class="ri-zoom-out-line font-20"></i>
+                    </button>
                     </div>
                     <div class="progress-w-percent col-6">
-                        <span class="fw-bold">100%</span>
-                        <div class="progress progress-sm">
-                            <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+                                    <span class="fw-bold" id="zoom-level">100%</span>
+                                    <div class="progress progress-sm">
+                                        <div class="progress-bar" role="progressbar" 
+                                        style="width: 0%;" 
+                                        aria-valuenow="0" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100"></div>
+                                    </div>
+                                </div>
                     <div class="col-3">
-                        <button type="button" class="btn btn-light w-100" id="reset-layout">
-                            <i class="ri-zoom-in-line font-20"></i>
-                        </button>
+                    <button type="button" class="btn btn-light w-100" id="reset-layout" onclick="updateZoomLevel()">
+                        <i class="ri-zoom-in-line font-20"></i>
+                    </button>
                     </div>
                 </div>
             </div>
@@ -1017,6 +1022,79 @@
 
         <!-- App js -->
         <script src="/js/app.min.js"></script>
+
+        <script>
+                        // Obtener los elementos de la página que se deben redimensionar
+                        var pageElements = document.querySelectorAll("body, h1, h2, h3, h4, h5, h6, p, a, button, form, input, select, textarea, .form-group, .form-control,label");
+
+
+                        // Definir una variable para el nivel de zoom actual
+                        var currentZoom = 100;
+
+                        // Función para aumentar el nivel de zoom
+                        function zoomIn() {
+                        currentZoom += 10;
+                        for (var i = 0; i < pageElements.length; i++) {
+                            pageElements[i].style.fontSize = currentZoom + "%";
+                            console.log("me ejecuto +");
+                        }
+                        }
+
+                        // Función para reducir el nivel de zoom
+                        function zoomOut() {
+                        currentZoom -= 10;
+                        for (var i = 0; i < pageElements.length; i++) {
+                            pageElements[i].style.fontSize = currentZoom + "%";
+                            console.log("me ejecuto -");
+                        }
+                        }
+                        // Función para actualizar el nivel de zoom actual
+                        function updateZoomLevel() {
+                        const zoomLevel = currentZoom;
+                        document.getElementById("zoom-level").innerText = `${zoomLevel}%`;
+                        // Obtener el valor actual del zoom
+                        var zoomValue = document.getElementById("zoom-level").innerText.replace("%", "");
+                        // Actualizar la barra de progreso con el valor del zoom
+                        document.querySelector(".progress-bar").style.width = zoomValue + "%";
+
+                        }
+
+
+                        // Obtener los botones de zoom y agregarles un listener para ejecutar las funciones correspondientes
+                        document.getElementById("reset-layout").addEventListener("click", zoomIn);
+                        document.getElementById("reset-layout-2").addEventListener("click", zoomOut);
+        </script>
+
+        <!-- Style de css para hacer zoom -->
+        <style>
+                #zoom-controls {
+                  position: fixed;
+                  top: 10px;
+                  right: 10px;
+                  z-index: 9999;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  gap: 10px;
+                  background-color: #f1f1f1;
+                  padding: 10px;
+                  border-radius: 5px;
+                }
+
+                #zoom-controls button {
+                  background-color: #4CAF50;
+                  color: white;
+                  padding: 10px;
+                  border: none;
+                  border-radius: 5px;
+                  cursor: pointer;
+                }
+
+                #zoom-level {
+                  font-weight: bold;
+                  font-size: 1.2em;
+                }
+      </style>
 
     </body>
 
