@@ -40,10 +40,8 @@ router.get('/empleados',isLoggedIn,async (req, res) => {
     console.log(noCompletadoPorcentaje);
 
     const telEmpleados = await pool.query('SELECT EM.nombre,EM.telefono,EM.idEmpleado FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
-    
-    const links = helpers.genLinks(telEmpleados, req.user.id, EncuestaActiva[0].idEncuesta);
+    const links = helpers.genLinks(telEmpleados, req.user.id, EncuestaActiva[0].idEncuesta,hotel[0].nombre);
     console.log(links);
-
     res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)'],links});
     }else{
         console.log("entra a esto")

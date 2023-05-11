@@ -9,7 +9,7 @@ const { database } = require('./keys');
 const passport = require('passport');
 const twilio = require('twilio');
 const accountSid = 'AC18a58ad0a44348a2f6a6a941818a26df'; // Reemplaza con tu Account SID de Twilio
-const authToken = '394347f80969995ef2faa976ee954fc7'; // Reemplaza con tu Auth Token de Twilio
+const authToken = '715c0146af8ec83f0d5da3a25596cc88'; // Reemplaza con tu Auth Token de Twilio
 const client = twilio(accountSid, authToken);
 
 //inicializaciones
@@ -72,26 +72,24 @@ app.get('/', (req, res) => {
 
 // Ruta para enviar el mensaje de WhatsApp
 app.post('/enviar',(req, res) => {
-    const numero = '';
+    const numero = req.body.numero;
     const mensaje = req.body.mensaje;
     console.log(numero);
     console.log(mensaje);
-    
-        // Utiliza la biblioteca twilio para enviar el mensaje de WhatsApp
-        client.messages
-        .create({
-            body: mensaje,
-            from: '+12706068036', // Reemplaza con tu número de WhatsApp de Twilio
-            to: numero
-        })
-        .then(() => {
-            res.send('Mensaje enviado exitosamente.');
-        })
-        .catch((error) => {
-            console.error('Error al enviar el mensaje:', error);
-            res.send('Error al enviar el mensaje.');
-        });
-
+    // Utiliza la biblioteca twilio para enviar el mensaje de WhatsApp
+    client.messages
+    .create({
+        body: mensaje,
+        from: '+12706068036', // Reemplaza con tu número de WhatsApp de Twilio
+        to: numero
+    })
+    .then(() => {
+        res.send('Mensaje enviado exitosamente al empleado.');
+    })
+    .catch((error) => {
+        console.error('Error al enviar el mensaje:', error);
+        res.send('Error al enviar el mensaje al empleado.');
+    });
 });
 
 //starting the server
