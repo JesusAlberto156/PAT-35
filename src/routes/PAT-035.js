@@ -212,6 +212,18 @@ router.get('/addHotelAdmin',async (req, res) => {
 //lsof -i :4000
 //kill -9 PID
 
+router.get('/Soporte-SesionIniciada-Principal-A',isLoggedIn,async (req, res) => {
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+
+    res.render('PAT-035/Soporte-SesionIniciada-Principal-A', {hotel: hotel[0]});
+});
+
+router.get('/Soporte-SesionIniciada-Usuario-A',isLoggedIn,async (req, res) => {
+    const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
+
+    res.render('PAT-035/Soporte-SesionIniciada-Usuario-A', {hotel: hotel[0]});
+});
+
 // Inicio de todos los tiempos
 router.get('/home',isLoggedIn,async (req, res) => {
    

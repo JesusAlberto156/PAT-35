@@ -31,6 +31,17 @@ router.get('/signin', (req, res) => {
 
 });
 
+router.get('/PAT-035/Soporte-IniciarSesion-Principal', (req, res) => {
+
+    res.render('PAT-035/Soporte-IniciarSesion-Principal');
+
+});
+
+router.get('/PAT-035/Soporte-IniciarSesion-Usuario', (req, res) => {
+
+    res.render('PAT-035/Soporte-IniciarSesion-Usuario');
+
+});
 
 router.post('/signin', (req, res, next) => {
     console.log(req.body);

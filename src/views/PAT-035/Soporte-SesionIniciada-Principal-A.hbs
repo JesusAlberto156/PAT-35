@@ -68,7 +68,6 @@
                                 <i class="ri-fullscreen-line font-22"></i>
                             </a>
                         </li>
-
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle arrow-none nav-user px-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <span class="account-user-avatar">
@@ -148,33 +147,21 @@
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                 <i class="uil-globe"></i>
-                                <span class="badge bg-success float-end">4</span>
-                                <span> Apartado </span>
+                                <span class="badge bg-success float-end">2</span>
+                                <span> Soporte </span>
                             </a>
                             <div class="collapse" id="sidebarDashboards">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="/PAT-035/home">
+                                        <a href="/PAT-035/Soporte-SesionIniciada-Principal-A">
                                             <i class="uil-home-alt"></i>
-                                            <span>Inicio</span>
+                                            <span>Principal</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/PAT-035/empleados">
-                                            <i class="uil-user"></i>
-                                            <span>Empleado</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/PAT-035/reportes">
-                                            <i class="uil-clipboard-alt"></i>
-                                            <span>Generar Reporte</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/PAT-035/estadisticasGlobales">
-                                            <i class="uil-graph-bar"></i>
-                                            <span>Estadística global</span>
+                                        <a href="/PAT-035/Soporte-SesionIniciada-Usuario-A">
+                                            <i class="uil-users-alt"></i>
+                                            <span>Usuario</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -201,299 +188,90 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-
                         <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">                                    
-                                    <div class="page-title-right">
-                                        <div class="btn-group" role="group">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Filtrar resultados...
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                            <li><a href="/PAT-035/home" class="dropdown-item">Todos los años</a></li>
-                                            <li><a href="/PAT-035/home-2023" class="dropdown-item">2023</a></li>
-                                            <li><a href="/PAT-035/home-2024" class="dropdown-item">2024</a></li>
-                                            <li><a href="/PAT-035/home-2025" class="dropdown-item">2025</a></li>
-                                            <li><a href="/PAT-035/home-2026" class="dropdown-item">2026</a></li>
-                                            </ul>
-                                        </div>
+                           <ul class="list-group list-group-horizontal">
+                                <div class="col-sm-3">
+                                    <a href="#Navegacion" class="link">Como navegar en el soporte</a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="#IS" class="link">Iniciar sesion</a>
+                                </div>
+                                <div class="col-sm-3">
+                                    <a href="#CR" class="link">Complentar tu registro</a>
+                                </div>
+                                <div class="col-sm-6">       
+                                    <a href="#Crono" class="link">Uso correcto de manera cronologica del sistema</a>
+                                </div> 
+                           </ul>
+                            <img src=" /images/Soporte/SoporteTitulo.png" class="img-fluid" alt="small logo" height="120">
+                        </div>
+                        <div class="border-top p-3 col-lg-8.8" id="Navegacion">
+                            <div class="card align-items-center">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h2 class="header-title align-items-center fs-2">Soporte técnico de PAT-035</h2>
+                                </div>
+                            </div>
+                            <div class="card align-items-center" id="IS">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <img src=" /images/Soporte/Navegacion.png" alt="small logo" height="120">
+                                    <div class="card-body">
+                                        <p class="card-text">La manera de navegar en el soporte de este sitio web es muy sencilla, pero en caso de no poder navegar con facilidad, puedes apoyarte con el siguiente video:</p>
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <a href="" class="nav-link">Aprender a navegar</a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <h4 class="page-title">TABLERO DE ESTADÍSTICAS</h4>
+                                </div>
+                            </div>
+                            <div class="card align-items-center" id="CR">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <img src=" /images/Soporte/IniciarSesion.avif" alt="small logo" height="150">
+                                    <div class="card-body">
+                                        <p class="card-text">Para poder Iniciar Sesión no tiene mucha dificultad, puedes apoyarte con los siguientes videos:</p>
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <a href="" class="nav-link">Iniciar sesión por primera vez</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" class="nav-link">Iniciar sesión</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card align-items-center" id="Crono">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <img src=" /images/Soporte/CompletarRegistro.jpg" alt="small logo" height="150">
+                                    <div class="card-body">
+                                        <p class="card-text">La manera de completar el registro para poder Iniciar Sesión es facil, puedes apoyarte con el siguiente video:</p>
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <a href="" class="nav-link">Completar Registro</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card align-items-center">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h2 class="header-title align-items-center fs-3">Más sobre PAT-035</h2>
+                                </div>
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div class="card">
+                                        <img src=" /images/Soporte/SobrePAT.jpg" alt="small logo" class="img-fluid" height="150">
+                                        <div class="card-body">
+                                            <p class="card-text text-justify">El sitio web PAT-035, es un sitio web encargado de facilitar el llenado de la encuesta obligatoria de la Norma 35, de la cual nos ayuda a almacenar las respuestas de las encuestas contestadas, generar resultados de las encuestas por medio de graficas, entre otra cosas mas. La manera cronologica que se utiliza de forma correcta el sistema se puede explicar en el siguiente video:</p>
+                                        </div>
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <a href="" class="nav-link">Cronologia del sistema</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-6">
-
-                               <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="card widget-flat">
-                                            <div class="card-body">
-                                                
-                                                <h5 class="text-muted fw-normal mt-0" title="Number of Customers">RESULTADO GENERAL</h5>
-                                                <h3  style="background-color: {{colorGen}}; padding: 10px; color: white; text-align: center;">Riesgo {{estadogen}}</h3>
-
-                                                <p class="mb-0 text-muted">
-                                                    
-                                                    <span class="text-nowrap">realizar acciones recomendadas</span>
-                                                </p>
-                                                
-                                            </div> <!-- end card-body-->
-                                        </div> <!-- end card-->
-                                    </div> <!-- end col-->
-
-                                    
-                                </div> <!-- end row -->
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="card widget-flat">
-                                            <div class="card-body">
-                                                
-                                                <h5 class="text-muted fw-normal mt-0" title="Average Revenue">ACCIONES</h5>
-                                                <P class="mt-3 mb-3">{{accionGen}}</P>
-                                                
-                                            </div> <!-- end card-body-->
-                                        </div> <!-- end card-->
-                                    </div> <!-- end col-->
-
-                                    
-                                </div> <!-- end row -->
-
-                            </div> <!-- end col -->
-
-                            <div class="col-xl-7 col-lg-6">
-                                <div class="card card-h-100">
-                                    <div class="d-flex card-header justify-content-between align-items-center">
-                                        <h4 class="header-title">RESULTADOS GENERALES</h4>
-                                        
-                                    </div>
-                                    <div class="card-body pt-0">
-                                        <canvas id="grafica1"></canvas>
-                                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                        <script>
-                                            const nuloOdespreciable = {{general.Nuloodespreciable}};
-                                            const bajo = {{general.Bajo}};
-                                            const medio = {{general.Medio}};
-                                            const alto = {{general.Alto}};
-                                            const muyAlto = {{general.Muyalto}};
-                                            const data = {
-                                                labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
-                                                datasets: [
-                                                    {
-                                                        data: [nuloOdespreciable, bajo, medio, alto, muyAlto],
-                                                        backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
-                                                    }
-                                                ]
-                                            };
-                                            const options = {
-                                                responsive: true,
-                                                maintainAspectRatio: false
-                                            };
-                                            const ctx = document.getElementById('grafica1').getContext('2d');
-                                            const myPieChart = new Chart(ctx, {
-                                                type: 'pie',
-                                                data: data,
-                                                options: options
-                                            });
-                                        </script>
-            
-    
-                                    </div> <!-- end card-body-->
-                                </div> <!-- end card-->
-
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                              <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
-                                <div class="card">
-                                    <div class="d-flex card-header justify-content-between align-items-center">
-                                        <h4 class="header-title">AMBIENTE DE TRABAJO </h4>
-                                       
-                                    </div>
-
-                                    <div class="card-body pt-0">
-                                         <canvas id="grafica2"></canvas>
-                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                            <script>
-                                                const ctx1 = document.getElementById('grafica2').getContext('2d');
-                                                const data1 = {
-                                                    labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
-                                                    datasets: [{
-                                                        label: 'Puntaje',
-                                                        data: [{{cat1.Nuloodespreciable}}, {{cat1.Bajo}}, {{cat1.Medio}}, {{cat1.Alto}}, {{cat1.Muyalto}}],
-                                                        backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
-                                                        borderWidth: 1
-                                                    }]
-                                                };
-                                                const options1 = {
-                                                    scales: {
-                                                        yAxes: [{
-                                                            ticks: {
-                                                                beginAtZero: true
-                                                            }
-                                                        }]
-                                                    },
-                                                    responsive: true,
-                                                    maintainAspectRatio: false
-                                                };
-                                                const myBarChart1 = new Chart(ctx1, {
-                                                    type: 'bar',
-                                                    data: data1,
-                                                    options: options1
-                                                });
-                                            </script>
-
-
-                                        
-                                    </div> <!-- end card-body-->
-                                </div> <!-- end card-->
-                            </div> <!-- end col-->
-
-
-                            <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
-                                <div class="card">
-                                    <div class="d-flex card-header justify-content-between align-items-center">
-                                        <h4 class="header-title">FACTORES PROPIOS DE LA ACTIVIDAD</h4>
-                                        
-                                    </div>
-
-                                    <div class="card-body pt-0">
-
-                                        <canvas id="grafica12"></canvas>
-                                            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                            <script>
-                                                const ctx2 = document.getElementById('grafica12').getContext('2d');
-                                                const data2 = {
-                                                    labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
-                                                    datasets: [{
-                                                        label: 'Puntaje',
-                                                        data: [{{cat2.Nuloodespreciable}}, {{cat2.Bajo}}, {{cat2.Medio}}, {{cat2.Alto}}, {{cat2.Muyalto}}],
-                                                        backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384'],
-                                                        borderWidth: 1
-                                                    }]
-                                                };
-                                                const options2 = {
-                                                    scales: {
-                                                        yAxes: [{
-                                                            ticks: {
-                                                                beginAtZero: true
-                                                            }
-                                                        }]
-                                                    },
-                                                    responsive: true,
-                                                    maintainAspectRatio: false
-                                                };
-                                                const myBarChart2 = new Chart(ctx2, {
-                                                    type: 'bar',
-                                                    data: data2,
-                                                    options: options2
-                                                });
-                                            </script>
-                                        
-                                    </div> <!-- end card-body-->
-                                </div> <!-- end card-->
-                            </div> <!-- end col-->
-                        </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
-                                <div class="card">
-                                    <div class="d-flex card-header justify-content-between align-items-center">
-                                        <h4 class="header-title"> ORGANIZACION DEL TIEMPO DE TRABAJO</h4>
-                                       
-                                    </div>
-
-                                    <div class="card-body pt-0">
-
-                                        <canvas id="grafica13"></canvas>
-                                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                        <script>
-                                            const nuloOdespreciable3 = {{cat3.Nuloodespreciable}};
-                                            const bajo3 = {{cat3.Bajo}};
-                                            const medio3 = {{cat3.Medio}};
-                                            const alto3 = {{cat3.Alto}};
-                                            const muyAlto3 = {{cat3.Muyalto}};
-                                            const data3 = {
-                                                labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
-                                                datasets: [
-                                                    {
-                                                        data: [nuloOdespreciable3, bajo3, medio3, alto3, muyAlto3],
-                                                        backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
-                                                    }
-                                                ]
-                                            };
-                                            const options3 = {
-                                                responsive: true,
-                                                maintainAspectRatio: false
-                                            };
-                                            const ctx3 = document.getElementById('grafica13').getContext('2d');
-                                            const myPieChart3 = new Chart(ctx3, {
-                                                type: 'pie',
-                                                data: data3,
-                                                options: options3
-                                            });
-                                        </script>
-                                        
-                                    </div> <!-- end card-body-->
-                                </div> <!-- end card-->
-                            </div> <!-- end col-->
-
-
-                            <div class="col-xl-6 col-lg-12 order-lg-2 order-xl-1">
-                                <div class="card">
-                                    <div class="d-flex card-header justify-content-between align-items-center">
-                                        <h4 class="header-title">LIDERAZGO Y RELACIONES EN EL TRABAJO</h4>
-                                        
-                                    </div>
-
-                                    <div class="card-body pt-0">
-                                         <canvas id="grafica14"></canvas>
-                                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                        <script>
-                                            const nuloOdespreciable4 = {{cat4.Nuloodespreciable}};
-                                            const bajo4= {{cat4.Bajo}};
-                                            const medio4 = {{cat4.Medio}};
-                                            const alto4= {{cat4.Alto}};
-                                            const muyAlto4= {{cat4.Muyalto}};
-                                            const data4 = {
-                                                labels: ['Nulo o despreciable', 'Bajo', 'Medio', 'Alto', 'Muy alto'],
-                                                datasets: [
-                                                    {
-                                                        data: [nuloOdespreciable4, bajo4, medio4, alto4, muyAlto4],
-                                                        backgroundColor: ['#99C7FF', '#7BD29A', '#FFD166', '#FFA07A', '#FF6384']
-                                                    }
-                                                ]
-                                            };
-                                            const options4 = {
-                                                responsive: true,
-                                                maintainAspectRatio: false
-                                            };
-                                            const ctx4 = document.getElementById('grafica14').getContext('2d');
-                                            const myPieChart4 = new Chart(ctx4, {
-                                                type: 'pie',
-                                                data: data4,
-                                                options: options4
-                                            });
-                                        </script>
-                                        
-                                    </div> <!-- end card-body-->
-                                </div> <!-- end card-->
-                            </div> <!-- end col-->
-
-                            
-                            
-
-                                    
-
-                        </div>
-                        <!-- end row -->
-
                     </div>
                     <!-- container -->
 
@@ -505,11 +283,17 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> © PAT035 - 35Coderthemes.com
+                                <form action="">
+                                    <script>document.write(new Date().getFullYear())</script> © PAT035 - 35Coderthemes.com
+                                </form>
                             </div>
                             <div class="col-md-6">
                                 <div class="text-md-end footer-links d-none d-md-block">
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a href="/PAT-035/home" class="link">Inicio</a>
+                                        <a href="/PAT-035/empleados" class="link">Empleado</a>
+                                        <a href="/PAT-035/reportes" class="link">Generar Reporte</a>
+                                        <a href="/PAT-035/estadisticasGlobales" class="link">Estadística global</a>
                                         <a href="/PAT-035/Soporte-SesionIniciada-Principal-A" class="link">Soporte</a>
                                     </div>
                                 </div>
@@ -528,7 +312,7 @@
 
         </div>
         <!-- END wrapper -->
-
+        
         <!-- Zoom -->
         <div class="offcanvas offcanvas-end" tabindex="-1" id="Zoom">
             <div class="d-flex align-items-center bg-primary p-3 offcanvas-header">
