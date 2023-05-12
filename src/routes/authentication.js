@@ -7,11 +7,23 @@ router.get('/signup', (req, res) => {
     res.render('auth/signup');
 });
 
-router.post('/signup',pasport.authenticate('local.signup', {
-        successRedirect: '/PAT-035/home',
-        failureRedirect: '/signup',
-        failureFlash: true
-}));
+router.post('/signup', (req,res,next) => {
+    console.log(req.body);
+    if(req.body.correo == 'adminPat@gmail.com'){
+        pasport.authenticate('local.signup', {
+            successRedirect: '/PAT-035/administrador',
+            failureRedirect: '/signup',
+            failureFlash: true
+        })(req,res, next);
+    }else{
+        pasport.authenticate('local.signup', {
+            successRedirect: '/PAT-035/home',
+            failureRedirect: '/signup',
+            failureFlash: true
+        })(req,res, next);
+    }
+
+});
 
 router.get('/signin', (req, res) => {
 
@@ -23,7 +35,7 @@ router.get('/signin', (req, res) => {
 router.post('/signin', (req, res, next) => {
     console.log(req.body);
     if (req.body.correo == 'adminPat@gmail.com') {
-        pasport.authenticate('local.signinadmin', {
+        pasport.authenticate('local.signin', {
             successRedirect: '/PAT-035/administrador',
             failureRedirect: '/signin',
             failureFlash: true
