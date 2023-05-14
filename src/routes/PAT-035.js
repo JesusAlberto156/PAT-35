@@ -38,19 +38,22 @@ router.get('/empleados',isLoggedIn,async (req, res) => {
     const totalRespuestas = await pool.query('SELECT count(*) FROM respuestas AS R INNER JOIN  encuesta AS EN ON EN.idEncuesta= R.idEncuesta AND EN.idHotel= ?', req.user.id); 
     if (EncuestaActiva.length>0){
     const numRespuestas = await pool.query('SELECT COUNT(*) as numRespuestas FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
-    const EmpleadoNoRespondio = await pool.query('SELECT EM.nombre,EM.sexo,EM.fecha_ingreso FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
+    const EmpleadoNoRespondio = await pool.query('SELECT EM.nombre,EM.sexo,EM.fecha_ingreso,EM.idEmpleado FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
     let totalEmpleadosNoPermitidos = 0;
     let totalEmpleadosPermitidos = 0;
+    var idEmpleadosPermitidos = [];
     EmpleadoNoRespondio.forEach(function(empleado) {
         empleado.fecha_encuesta = EncuestaActiva[0].fecha;
         empleado.antiguedad = helpers.getDiferenciaFecha(empleado.fecha_ingreso.toISOString().slice(0, 10), fechaActual);
         if(empleado.antiguedad > 90){
             totalEmpleadosPermitidos++;
+            idEmpleadosPermitidos.push(empleado.idEmpleado);
         }else{
             totalEmpleadosNoPermitidos++;
         }
     });
     console.log(EmpleadoNoRespondio);
+    console.log(idEmpleadosPermitidos);
     const completadoPorcentaje = numRespuestas[0].numRespuestas ;
     console.log(EncuestaActiva)
     const noCompletadoPorcentaje = totalEmpleadosPermitidos - completadoPorcentaje;
@@ -60,7 +63,16 @@ router.get('/empleados',isLoggedIn,async (req, res) => {
     const telEmpleados = await pool.query('SELECT EM.nombre,EM.telefono,EM.idEmpleado FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
     const links = helpers.genLinks(telEmpleados, req.user.id, EncuestaActiva[0].idEncuesta,hotel[0].nombre);
     console.log(links);
-    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalEmpleadosPermitidos,totalEmpleadosNoPermitidos,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)'],links});
+    var linksPermitidos = [];
+    links.forEach(function(link){
+        idEmpleadosPermitidos.forEach(function(idPermitido){
+            if(link.idEmpleado == idPermitido){
+                linksPermitidos.push(link);
+            } 
+        });
+    });
+    console.log(linksPermitidos);
+    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalEmpleadosPermitidos,totalEmpleadosNoPermitidos,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)'],links,linksPermitidos});
     }else{
         console.log("entra a esto")
         res.render('PAT-035/empleados', {hotel: hotel[0], empleados, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalEmpleadosPermitidos,totalEmpleadosNoPermitidos,totalRespuestas: totalRespuestas[0]['count(*)']});
@@ -187,6 +199,18 @@ router.get('/startEncuesta',async (req, res) => {
         res.redirect('/PAT-035/empleados');
     }
     
+});
+
+router.get('/endEncuesta',async (req, res) => {
+    const encuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
+    if(encuestaActiva.length > 0){
+        await pool.query('UPDATE encuesta SET estatus = 1 WHERE idEncuesta = ?', [encuestaActiva[0].idEncuesta]);
+        req.flash('success', 'Se ha finalizado la encuesta activa correctamente');
+        res.redirect('/PAT-035/empleados');
+    }else{
+        req.flash('message', 'No existe una encuesta activa');
+        res.redirect('/PAT-035/empleados');
+    }
 });
 
 router.get('/verEncuesta/:idEncuesta/:idEmpleado',async (req, res) => {

@@ -8,6 +8,7 @@ router.get('/:idHotel/:idEncuesta/encuesta/:idEmpleado', async (req, res) => {
     var currentDate = new Date();
     var fechaActual = currentDate.toISOString().slice(0, 10);
     const empleado = await pool.query('SELECT * FROM empleado WHERE idEmpleado = ?',[req.params.idEmpleado]);
+    console.log(empleado);
     var fechaInicio = empleado[0].fecha_ingreso.toISOString().slice(0, 10);
     var antiguedad = helpers.getDiferenciaFecha(fechaInicio, fechaActual);
     console.log(antiguedad);

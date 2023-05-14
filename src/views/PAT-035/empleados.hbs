@@ -309,14 +309,13 @@
 
           <div class="card">
             <div class="row">
-              <div class="col-12">
+              <div class="col-2">
                 <a href="/PAT-035/startEncuesta" type="button" class="btn btn-primary rounded-pill uil-clipboard-alt">Iniciar Encuesta</a>
               </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="row">
-              <div class="col-12">
+              <div class="col-2">
+                <a href="/PAT-035/endEncuesta" type="button" class="btn btn-primary rounded-pill uil-clipboard-alt">Finalizar Encuesta</a>
+              </div>
+              <div class="col-2">
                 <button class="btn btn-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#Mensajes"><i class="uil-comment-alt-message"></i> Enviar Mensaje</button>
               </div>
             </div>
@@ -861,7 +860,7 @@
                 </tr>
               </thead>
               <tbody>
-                {{#each links}}
+                {{#each linksPermitidos}}
                   <form action="/enviar" method="POST">
                     <tr>
                       <td>
