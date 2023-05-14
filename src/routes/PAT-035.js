@@ -23,6 +23,8 @@ handlebars.registerHelper('gt', function(a, b) {
   });
 router.get('/empleados',isLoggedIn,async (req, res) => {
     var currentDate = new Date();
+    let totalEmpleadosNoPermitidos = 0;
+    let totalEmpleadosPermitidos = 0;
     var fechaActual = currentDate.toISOString().slice(0, 10);
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
     const empleados = await pool.query('SELECT * FROM empleado WHERE idhotel = ?', req.user.id);
