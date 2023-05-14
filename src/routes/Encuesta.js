@@ -2,20 +2,31 @@ const express = require('express');
 const router = express.Router();
 
 const pool = require('../database');
+const helpers = require('../lib/helpers');
 
 router.get('/:idHotel/:idEncuesta/encuesta/:idEmpleado', async (req, res) => {
-    const check = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ? AND idEmpleado = ?', [req.params.idEncuesta, req.params.idEmpleado]);
-    if (check.length > 0) {
-        res.render('Encuesta/completada');
-    }
-    else{
-    const {idHotel, idEncuesta, idEmpleado} = req.params;
-    console.log(idHotel, idEncuesta, idEmpleado);
-    const hotel = await pool.query('Select * from hotel where id = ?', [idHotel]);
-    const empleado = await pool.query('Select * from empleado where idEmpleado = ?', [idEmpleado]);
+    var currentDate = new Date();
+    var fechaActual = currentDate.toISOString().slice(0, 10);
+    const empleado = await pool.query('SELECT * FROM empleado WHERE idEmpleado = ?',[req.params.idEmpleado]);
+    var fechaInicio = empleado[0].fecha_ingreso.toISOString().slice(0, 10);
+    var antiguedad = helpers.getDiferenciaFecha(fechaInicio, fechaActual);
+    console.log(antiguedad);
+    if(antiguedad > 90){
+        const check = await pool.query('SELECT * FROM respuestas WHERE idEncuesta = ? AND idEmpleado = ?', [req.params.idEncuesta, req.params.idEmpleado]);
+        if (check.length > 0) {
+            res.render('Encuesta/completada');
+        }
+        else{
+        const {idHotel, idEncuesta, idEmpleado} = req.params;
+        console.log(idHotel, idEncuesta, idEmpleado);
+        const hotel = await pool.query('Select * from hotel where id = ?', [idHotel]);
+        const empleado = await pool.query('Select * from empleado where idEmpleado = ?', [idEmpleado]);
 
-    console.log(empleado[0]);
-    res.render('Encuesta/encuesta', {hotel: hotel[0], empleado: empleado[0]});
+        console.log(empleado[0]);
+        res.render('Encuesta/encuesta', {hotel: hotel[0], empleado: empleado[0]});
+        }
+    }else {
+        res.render('Encuesta/NoPermitida');
     }
 });
 

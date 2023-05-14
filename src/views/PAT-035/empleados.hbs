@@ -379,7 +379,7 @@
                 <div
                   class="card-header bg-light-lighten border-top border-bottom border-light py-1 text-center"
                 >
-                  <p class="m-0"><b>{{completadoPorcentaje}}</b> Encuestas completadas de {{totalEmpleados}}</p>
+                  <p class="m-0"><b>{{completadoPorcentaje}}</b> Encuestas completadas de {{totalEmpleadosPermitidos}}</p>
                 </div>
 
                 <div class="card-body pt-2">
@@ -399,36 +399,69 @@
                       </thead>
                       <tbody>
                        {{#each EmpleadoNoRespondio}}
-                        <tr>
-                          <td>
-                            <div class="d-flex align-items-center">
-                              <div class="flex-shrink-0">
-                                <img
-                                  class="rounded-circle"
-                                  src="/images/users/{{sexo}}.jpg"
-                                  alt="Avtar image"
-                                  width="33"
-                                />
+                        {{#if (gt antiguedad 90)}}
+                          <tr>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <img
+                                    class="rounded-circle"
+                                    src="/images/users/{{sexo}}.jpg"
+                                    alt="Avtar image"
+                                    width="33"
+                                  />
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                  {{nombre}}
+                                </div>
                               </div>
-                              <div class="flex-grow-1 ms-2">
-                                {{nombre}}
+                            </td>
+                            <td><i class="uil  me-1"></i></td>
+                            <td>
+                              <span
+                                class="badge bg-danger-lighten text-danger"
+                              >Sin Completar</span>
+                            </td>
+                            <td>
+                              <span class=" fw-semibold">{{fecha_encuesta}}</span>
+                            </td>
+                            <td class="text-end">
+                              
+                            </td>
+                          </tr>
+                          <!-- end tr -->
+                        {{else}}
+                          <tr>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <img
+                                    class="rounded-circle"
+                                    src="/images/users/{{sexo}}.jpg"
+                                    alt="Avtar image"
+                                    width="33"
+                                  />
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                  {{nombre}}
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                          <td><i class="uil  me-1"></i></td>
-                          <td>
-                            <span
-                              class="badge bg-danger-lighten text-danger"
-                            >Sin Completar</span>
-                          </td>
-                          <td>
-                            <span class=" fw-semibold">{{fecha}}</span>
-                          </td>
-                          <td class="text-end">
-                            
-                          </td>
-                        </tr>
-                        <!-- end tr -->
+                            </td>
+                            <td><i class="uil  me-1"></i></td>
+                            <td>
+                              <span
+                                class="badge bg-warning-lighten text-warning"
+                              >No permitido</span>
+                            </td>
+                            <td>
+                              <span class=" fw-semibold">{{fecha_encuesta}}</span>
+                            </td>
+                            <td class="text-end">
+                              
+                            </td>
+                          </tr>
+                          <!-- end tr -->
+                        {{/if}}
                         {{/each}}
                       </tbody>
                     </table>
@@ -490,6 +523,7 @@
                           <th scope="col">Telefono</th>
                           <th scope="col">Correo</th>
                           <th scope="col">Puesto</th>
+                          <th scope="col">Antigüedad</th>
                           <th scope="col" class="text-end">Acción</th>
                         </tr>
                       </thead>
@@ -518,7 +552,9 @@
                             <td>
                               {{puesto}}
                             </td>
-
+                            <td>
+                              {{antiguedad}} días
+                            </td>
                             <td class="text-end">
                               <a
                                 href="/PAT-035/editEmpleado/{{idEmpleado}}"
@@ -693,6 +729,20 @@
                 name="puesto"
                 placeholder="Agrega el puesto..."
               />
+            </div>
+
+            <div class="mb-3">
+              <label for="projectPosition" class="form-label">Fecha de ingreso en el puesto</label>
+              <div class="input-group mb-3">
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="projectPosition"
+                  name="fecha_ingreso"
+                  placeholder="Agrega la fecha..."
+                />
+                <span class="input-group-text" id="basic-addon2">YYYY/MM/DD</span>
+              </div>
             </div>
           </div>
           <div class="modal-footer">

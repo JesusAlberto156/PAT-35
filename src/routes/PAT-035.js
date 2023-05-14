@@ -18,34 +18,50 @@ handlebars.registerHelper('times', function(n, block) {
 handlebars.registerHelper('eq', function(a, b) {
     return a === b;
   });
-
+handlebars.registerHelper('gt', function(a, b) {
+    return a > b;
+  });
 router.get('/empleados',isLoggedIn,async (req, res) => {
+    var currentDate = new Date();
+    var fechaActual = currentDate.toISOString().slice(0, 10);
     const hotel = await pool.query('SELECT * FROM hotel WHERE id = ?', req.user.id);
     const empleados = await pool.query('SELECT * FROM empleado WHERE idhotel = ?', req.user.id);
+    empleados.forEach(function(empleado){
+        empleado.antiguedad = helpers.getDiferenciaFecha(empleado.fecha_ingreso.toISOString().slice(0, 10), fechaActual);
+    });
+    console.log(empleados);
     const numEncuestas = await pool.query('SELECT COUNT(*) as numEncuestas FROM encuesta WHERE idhotel = ?', req.user.id);
     const EncuestaActiva = await pool.query('SELECT * FROM encuesta WHERE idhotel = ? AND estatus = 0', req.user.id);
     const totalEmpleados = empleados.length;
     const totalRespuestas = await pool.query('SELECT count(*) FROM respuestas AS R INNER JOIN  encuesta AS EN ON EN.idEncuesta= R.idEncuesta AND EN.idHotel= ?', req.user.id); 
     if (EncuestaActiva.length>0){
     const numRespuestas = await pool.query('SELECT COUNT(*) as numRespuestas FROM respuestas WHERE idEncuesta = ?', EncuestaActiva[0].idEncuesta);
-    const EmpleadoNoRespondio = await pool.query('SELECT EM.nombre,EM.sexo FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
+    const EmpleadoNoRespondio = await pool.query('SELECT EM.nombre,EM.sexo,EM.fecha_ingreso FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
+    let totalEmpleadosNoPermitidos = 0;
+    let totalEmpleadosPermitidos = 0;
     EmpleadoNoRespondio.forEach(function(empleado) {
-        empleado.fecha = EncuestaActiva[0].fecha;
-      });
-    
+        empleado.fecha_encuesta = EncuestaActiva[0].fecha;
+        empleado.antiguedad = helpers.getDiferenciaFecha(empleado.fecha_ingreso.toISOString().slice(0, 10), fechaActual);
+        if(empleado.antiguedad > 90){
+            totalEmpleadosPermitidos++;
+        }else{
+            totalEmpleadosNoPermitidos++;
+        }
+    });
+    console.log(EmpleadoNoRespondio);
     const completadoPorcentaje = numRespuestas[0].numRespuestas ;
     console.log(EncuestaActiva)
-    const noCompletadoPorcentaje = totalEmpleados - completadoPorcentaje;
+    const noCompletadoPorcentaje = totalEmpleadosPermitidos - completadoPorcentaje;
     console.log(completadoPorcentaje);
     console.log(noCompletadoPorcentaje);
 
     const telEmpleados = await pool.query('SELECT EM.nombre,EM.telefono,EM.idEmpleado FROM empleado AS EM LEFT JOIN respuestas AS R ON EM.idEmpleado = R.idEmpleado AND R.idEncuesta = ? WHERE R.idEncuesta IS NULL and EM.idHotel=?', [[EncuestaActiva[0].idEncuesta],req.user.id]);
     const links = helpers.genLinks(telEmpleados, req.user.id, EncuestaActiva[0].idEncuesta,hotel[0].nombre);
     console.log(links);
-    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)'],links});
+    res.render('PAT-035/empleados', {hotel: hotel[0], empleados,completadoPorcentaje, noCompletadoPorcentaje, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalEmpleadosPermitidos,totalEmpleadosNoPermitidos,fecha: EncuestaActiva[0].fecha, EmpleadoNoRespondio, totalRespuestas: totalRespuestas[0]['count(*)'],links});
     }else{
         console.log("entra a esto")
-        res.render('PAT-035/empleados', {hotel: hotel[0], empleados, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalRespuestas: totalRespuestas[0]['count(*)']});
+        res.render('PAT-035/empleados', {hotel: hotel[0], empleados, numEncuestas: numEncuestas[0].numEncuestas, totalEmpleados,totalEmpleadosPermitidos,totalEmpleadosNoPermitidos,totalRespuestas: totalRespuestas[0]['count(*)']});
     }
     
 });
@@ -62,31 +78,51 @@ router.get('/editEmpleado/:idEmpleado',isLoggedIn,async (req, res) => {
 router.post('/editEmpleado/:idEmpleado',isLoggedIn,async (req, res) => {
     const {idEmpleado} = req.params;
     const {nombre, telefono, correo,sexo,puesto} = req.body;
-    const newEmpleado = {
-        nombre,
-        telefono,
-        correo,
-        sexo,
-        puesto,
-        idhotel: req.user.id
-    };
-    await pool.query('UPDATE empleado set ? WHERE idEmpleado = ?', [newEmpleado, idEmpleado]);
-    req.flash('success', 'Empleado actualizado satisfactoriamente');
-    
-    res.redirect('/PAT-035/empleados');
-
-    
+    const empleado = await pool.query('SELECT * FROM empleado WHERE idEmpleado = ?', [idEmpleado]);
+    if(puesto === empleado[0].puesto){
+        const fecha_ingreso = empleado[0].fecha_ingreso;
+        const newEmpleado = {
+            nombre,
+            telefono,
+            correo,
+            sexo,
+            puesto,
+            fecha_ingreso,
+            idhotel: req.user.id
+        };
+        await pool.query('UPDATE empleado set ? WHERE idEmpleado = ?', [newEmpleado, idEmpleado]);
+        req.flash('success', 'Empleado actualizado satisfactoriamente');
+        
+        res.redirect('/PAT-035/empleados');
+    }else{
+        var currentDate = new Date();
+        var fecha_ingreso = currentDate.toISOString().slice(0, 10);
+        const newEmpleado = {
+            nombre,
+            telefono,
+            correo,
+            sexo,
+            puesto,
+            fecha_ingreso,
+            idhotel: req.user.id
+        };
+        await pool.query('UPDATE empleado set ? WHERE idEmpleado = ?', [newEmpleado, idEmpleado]);
+        req.flash('success', 'Empleado actualizado satisfactoriamente');
+        
+        res.redirect('/PAT-035/empleados');
+    }
 });
 
 
 router.post('/addEmpleado', async (req, res) => {
-    const {nombre, telefono, correo,sexo,puesto} = req.body;
+    const {nombre, telefono, correo,sexo,puesto,fecha_ingreso} = req.body;
     const newEmpleado = {
         nombre,
         telefono,
         correo,
         sexo,
         puesto,
+        fecha_ingreso,
         idhotel: req.user.id
     };
     

@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const helpers = {};
+var moment = require('moment');
 
 helpers.encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
@@ -397,7 +398,11 @@ helpers.genLinks = (arr, idHotel, idEncuesta,nombreHotel) => {
   });
   return arr;
 }
-
-
+//Diferencia de fechas
+helpers.getDiferenciaFecha = (fechaInicio, fechaFin) => {
+  var diff = moment(fechaFin).valueOf() - moment(fechaInicio).valueOf();
+  var diffInDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+  return diffInDays;
+};
 
 module.exports = helpers;
