@@ -269,9 +269,14 @@
                                             </div>
                                             <div class="col-sm-7">
                                                 <div class="text-sm-end">
-                                                    <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog-outline"></i></button>
-                                                    <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                                                    <button type="button" class="btn btn-light mb-2">Export</button>
+                                                     <a href="javascript:void(0);" class="text-center text-muted p-2" data-bs-toggle="modal" data-bs-target="#AsuperAdmin">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                    
+                                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                                    </svg>
+                                                    </a>
+                                                    <!--<button type="button" class="btn btn-light mb-2 me-1">Import</button>
+                                                    <button type="button" class="btn btn-light mb-2">Export</button>end col-->
                                                 </div>
                                             </div><!-- end col-->
                                         </div>
@@ -1076,6 +1081,45 @@
         </div>
 
         <!-- Vendor js -->
+
+        <form id="employeeForm" class="my-form">
+          <div class="modal fade" id="AsuperAdmin" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  
+                </div>
+                <h5 class="modal-title" id="CreateProjectLabel">En esta seccion puede editar en el logo del lapiz 
+                    <br>Logo de un ojito:Desactivar hoteles en caso de <br> requerirlo ,no te dejara ingresar hasta volver a activar <br>En el boton rojo puedes agregar algun hotel  </h5>
+              
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <script>
+            const exampleModal = document.getElementById('exampleModal')
+            exampleModal.addEventListener('show.bs.modal', event => {
+                // Button that triggered the modal
+                const button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                const recipient = button.getAttribute('data-bs-whatever')
+                // If necessary, you could initiate an AJAX request here
+                // and then do the updating in a callback.
+                //
+                // Update the modal's content.
+                const modalTitle = exampleModal.querySelector('.modal-title')
+                const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+                modalTitle.textContent = `New message to ${recipient}`
+                modalBodyInput.value = recipient
+            })
+        </script>
         <script src=" /js/vendor.min.js"></script>
 
         <!-- Datatable js -->
@@ -1090,5 +1134,35 @@
 
         <!-- App js -->
         <script src=" /js/app.min.js"></script>
+        <style>
 
+                .modal-body {
+                color: #cd8383;
+                margin-bottom: 20px;
+                }
+
+                .btn-secondary {
+                background-color: #2479be;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                }
+
+                .btn-secondary:hover {
+                background-color: #999;
+                }
+                .modal-title{
+                    text-align: center;
+                    color: #cd8383;
+                }
+                .modal-footer {
+                    text-align: center;
+                    border-radius: 0%;
+                }
+                .modal-footer button {
+                    display: block;
+                    margin: 0 auto;
+                }
+        </style>
     </body>

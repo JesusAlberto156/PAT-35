@@ -315,6 +315,12 @@
                                             <div class="col-xl-6">
                                                 <div class="mb-3">
                                                     <label for="projectname" class="form-label" >Correo-Usuario</label>
+                                                    <a href="javascript:void(0);" class="text-center text-muted p-2" data-bs-toggle="modal" data-bs-target="#CorreoU">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                    
+                                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                                    </svg>
+                                                    </a>
                                                     <input type="text" 
                                                     id="Nom_Hotel" 
                                                     class="form-control" 
@@ -324,7 +330,7 @@
                                                 </div>
                                                 
                                                 <div class="mb-3">
-                                                    <label for="projectname" class="form-label">Nombre</label>
+                                                    <label for="projectname" class="form-label">Nombre-Hotel</label>
                                                     <input type="text" 
                                                     id="Nom_Hotel" 
                                                     class="form-control" 
@@ -335,6 +341,12 @@
 
                                                 <div class="mb-3">
                                                     <label for="project-overview" class="form-label">Descripcion</label>
+                                                    <a href="javascript:void(0);" class="text-center text-muted p-2" data-bs-toggle="modal" data-bs-target="#DescripcionH">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                    
+                                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                                    </svg>
+                                                    </a>
                                                     <textarea class="form-control" name="descripcion" id="des_Hotel" rows="5" placeholder="Ingresar una descripcion del hotel.." required></textarea>
                                                 </div>
 
@@ -376,6 +388,12 @@
                                                 <!-- Date View -->
                                                 <div class="mb-3">
                                                     <label for="project-budget" class="form-label">RFC</label>
+                                                    <a href="javascript:void(0);" class="text-center text-muted p-2" data-bs-toggle="modal" data-bs-target="#RFCS">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                    
+                                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                                    </svg>
+                                                    </a>
                                                     <input type="text" name="rfc" id="project-budget" class="form-control" placeholder="Ingresa RFC del hotel" required>
                                                 </div>
                                                   <div class="col-sm-4">
@@ -1116,6 +1134,66 @@
             </div>
         </div>
 
+        <form id="employeeForm" class="my-form">
+          <div class="modal fade" id="CorreoU" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  
+                </div>
+                <h5 class="modal-title" id="CreateProjectLabel">Ejemplo:LaLoma@gmail.com <br> Este sera su usuario</h5>
+              
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <form id="employeeForm" class="my-form">
+          <div class="modal fade" id="DescripcionH" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  
+                </div>
+                <h5 class="modal-title" id="CreateProjectLabel">5 habitaciones <br>Alberca <br>Excelente Ubicacion</h5>
+              
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <form id="employeeForm" class="my-form">
+          <div class="modal fade" id="RFCS" tabindex="-1" aria-labelledby="CreateProjectLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  
+                </div>
+                <h5 class="modal-title" id="CreateProjectLabel">El RFC se compone de 13 digitos</h5>
+              
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
         <!-- Vendor js -->
         <script src=" /js/vendor.min.js"></script>
 
@@ -1133,5 +1211,56 @@
 
         <!-- App js -->
         <script src=" /js/app.min.js"></script>
+
+        <script>
+            const exampleModal = document.getElementById('exampleModal')
+            exampleModal.addEventListener('show.bs.modal', event => {
+                // Button that triggered the modal
+                const button = event.relatedTarget
+                // Extract info from data-bs-* attributes
+                const recipient = button.getAttribute('data-bs-whatever')
+                // If necessary, you could initiate an AJAX request here
+                // and then do the updating in a callback.
+                //
+                // Update the modal's content.
+                const modalTitle = exampleModal.querySelector('.modal-title')
+                const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+                modalTitle.textContent = `New message to ${recipient}`
+                modalBodyInput.value = recipient
+            })
+        </script>
+
+        <style>
+
+                .modal-body {
+                color: #cd8383;
+                margin-bottom: 20px;
+                }
+
+                .btn-secondary {
+                background-color: #2479be;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                }
+
+                .btn-secondary:hover {
+                background-color: #999;
+                }
+                .modal-title{
+                    text-align: center;
+                    color: #cd8383;
+                }
+                .modal-footer {
+                    text-align: center;
+                    border-radius: 0%;
+                }
+                .modal-footer button {
+                    display: block;
+                    margin: 0 auto;
+                }
+        </style>
 
     </body>
