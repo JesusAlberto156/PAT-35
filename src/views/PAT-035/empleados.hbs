@@ -689,6 +689,7 @@
                 id="projectName"
                 name="nombre"
                 placeholder="Agrega el nombre completo..."
+                required
               />
             </div>
             <div class="mb-3">
@@ -699,6 +700,7 @@
                 id="projectPhone"
                 name="telefono"
                 placeholder="Agrega el telefono..."
+                required
               />
             </div>
             <div class="mb-3">
@@ -709,11 +711,12 @@
                 id="projectEmail"
                 name="correo"
                 placeholder="Agrega el correo..."
+                required
               />
             </div>
             <div class="mb-3">
               <label for="projectGender" class="form-label">Sexo</label>
-              <select class="form-select" id="projectGender" name="sexo">
+              <select class="form-select" id="projectGender" name="sexo" required>
                 <option value="M">Masculino</option>
                 <option value="F">Femenino</option>
               </select>
@@ -727,22 +730,27 @@
                 id="projectPosition"
                 name="puesto"
                 placeholder="Agrega el puesto..."
+                required
               />
             </div>
 
             <div class="mb-3">
-              <label for="projectPosition" class="form-label">Fecha de ingreso en el puesto</label>
-              <div class="input-group mb-3">
+                <label for="projectDate" class="form-label">Fecha de ingreso en el puesto</label>
+                <div class="input-group mb-3">
                   <input
-                  type="text"
-                  class="form-control"
-                  id="projectPosition"
-                  name="fecha_ingreso"
-                  placeholder="Agrega la fecha..."
-                />
-                <span class="input-group-text" id="basic-addon2">YYYY/MM/DD</span>
-              </div>
+                    type="text"
+                    class="form-control datepicker"
+                    id="projectDate"
+                    name="fecha_ingreso"
+                    placeholder="Agrega la fecha..."
+                    required
+                    pattern="\d{4}/\d{2}/\d{2}"
+                    title="Formato de fecha inválido. Utiliza el formato YYYY/MM/DD"
+                  />
+                  <span class="input-group-text" id="basic-addon2">YYYY/MM/DD</span>
+                </div>
             </div>
+
           </div>
           <div class="modal-footer">
             <button
@@ -2038,6 +2046,11 @@
 
   <!-- App js -->
   <script src="/js/app.min.js"></script>
+
+
+
+
+
   <script>
                         // Obtener los elementos de la página que se deben redimensionar
                         var pageElements = document.querySelectorAll("body, h1, h2, h3, h4, h5, h6, p, a, button, form, input, select, textarea, .form-group, .form-control,label");
