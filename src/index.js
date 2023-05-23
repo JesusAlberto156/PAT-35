@@ -9,7 +9,7 @@ const { database } = require('./keys');
 const passport = require('passport');
 const twilio = require('twilio');
 const accountSid = 'AC18a58ad0a44348a2f6a6a941818a26df'; // Reemplaza con tu Account SID de Twilio
-const authToken = '715c0146af8ec83f0d5da3a25596cc88'; // Reemplaza con tu Auth Token de Twilio
+const authToken = '097d496acf3ec9cabf947237841090b9'; // Reemplaza con tu Auth Token de Twilio
 const client = twilio(accountSid, authToken);
 
 //inicializaciones
@@ -86,11 +86,13 @@ app.post('/Enviar',(req, res) => {
         to: numero
     })
     .then(() => {
-        res.send('Mensaje enviado exitosamente al empleado ' + nombre + '.');
+        req.flash('success','Mensaje enviado exitosamente al empleado ' + nombre + '.');
+        res.redirect('/PAT-035/empleados');
     })
     .catch((error) => {
         console.error('Error al enviar el mensaje:', error);
-        res.send('Error al enviar el mensaje al empleado.');
+        req.flash('message','Error al enviar el mensaje al empleado ' + nombre + '.');
+        res.redirect('/PAT-035/empleados');
     });
 });
 
