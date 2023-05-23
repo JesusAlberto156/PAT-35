@@ -6,6 +6,7 @@ const helpers = require('../lib/helpers');
 
 router.get('/:idHotel/:idEncuesta/encuesta/:idEmpleado', async (req, res) => {
     var currentDate = new Date();
+    var idEncuesta =req.params.idEncuesta; 
     var fechaActual = currentDate.toISOString().slice(0, 10);
     const empleado = await pool.query('SELECT * FROM empleado WHERE idEmpleado = ?',[req.params.idEmpleado]);
     console.log(empleado);
@@ -24,7 +25,7 @@ router.get('/:idHotel/:idEncuesta/encuesta/:idEmpleado', async (req, res) => {
         const empleado = await pool.query('Select * from empleado where idEmpleado = ?', [idEmpleado]);
 
         console.log(empleado[0]);
-        res.render('Encuesta/encuesta', {hotel: hotel[0], empleado: empleado[0]});
+        res.render('Encuesta/encuesta', {hotel: hotel[0], empleado: empleado[0],idEncuesta});
         }
     }else {
         res.render('Encuesta/NoPermitida');
