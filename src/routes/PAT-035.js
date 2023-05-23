@@ -56,7 +56,11 @@ router.get('/empleados',isLoggedIn,async (req, res) => {
     console.log(idEmpleadosPermitidos);
     const completadoPorcentaje = numRespuestas[0].numRespuestas ;
     console.log(EncuestaActiva)
-    const noCompletadoPorcentaje = totalEmpleadosPermitidos - completadoPorcentaje;
+    if(totalEmpleadosPermitidos == 0){
+        noCompletadoPorcentaje = 0;
+    }else{
+        const noCompletadoPorcentaje = totalEmpleadosPermitidos - completadoPorcentaje;
+    }
     console.log(completadoPorcentaje);
     console.log(noCompletadoPorcentaje);
 

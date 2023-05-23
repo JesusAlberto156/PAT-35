@@ -71,11 +71,13 @@ app.get('/', (req, res) => {
 });
 
 // Ruta para enviar el mensaje de WhatsApp
-app.post('/enviar',(req, res) => {
+app.post('/Enviar',(req, res) => {
     const numero = req.body.numero;
     const mensaje = req.body.mensaje;
+    const nombre = req.body.nombre;
     console.log(numero);
     console.log(mensaje);
+    console.log(nombre);
     // Utiliza la biblioteca twilio para enviar el mensaje de WhatsApp
     client.messages
     .create({
@@ -84,7 +86,7 @@ app.post('/enviar',(req, res) => {
         to: numero
     })
     .then(() => {
-        res.send('Mensaje enviado exitosamente al empleado.');
+        res.send('Mensaje enviado exitosamente al empleado ' + nombre + '.');
     })
     .catch((error) => {
         console.error('Error al enviar el mensaje:', error);
